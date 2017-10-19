@@ -12,4 +12,34 @@ item_NAME{
 
 }
 """
+item_keycard = {
+	"id": "keycard",
 
+	"name": "a keycard",
+
+	"description":
+	"",
+
+	"mass": 0.5
+}
+
+item_manages_credit_card = {
+	"id": "credit_card",
+
+	"name": "manage's credit card"
+
+	"description":
+	"",
+
+	"mass": 0.5
+}
+
+item_lunch_coupon = {
+	"id": "lunch_coupon"
+}
+
+item_combination = {
+	"id": "combination",
+
+	"name": "combination",
+}
