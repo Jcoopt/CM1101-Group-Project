@@ -1,17 +1,3 @@
-"""
-
-item rough layout:
-
-
-item_NAME{
-    "id": "Item's Id (i.e computer friendly name)",
-
-    "name": "the (human friendly) name of item",
-
-    "description":"Item's description",
-
-}
-"""
 item_keycard = {
 	"id": "keycard",
 
@@ -20,7 +6,7 @@ item_keycard = {
 	"description":
 	"",
 
-	"mass": 0.5
+	"mass": 0.4
 }
 
 item_manages_credit_card = {
@@ -35,9 +21,21 @@ item_manages_credit_card = {
 }
 
 item_lunch_coupon = {
-	"id": ""
+
+    "id": "Item's Id (i.e computer friendly name)",
+
+    "name": "the (human friendly) name of item",
+    
+    "description":"Item's description",
+    "mass": 0.1
 }
 
 item_combination = {
-	
+
+	 "id": "Item's Id (i.e computer friendly name)",
+
+    "name": "the (human friendly) name of item",
+    
+    "description":"Item's description",
+    "mass": 0.1
 }
