@@ -15,7 +15,7 @@ item_NAME{
 item_keycard = {
 	"id": "keycard",
 
-	"name": "keycard",
+	"name": "a keycard",
 
 	"description":
 	"",
@@ -35,9 +35,11 @@ item_manages_credit_card = {
 }
 
 item_lunch_coupon = {
-	"id": ""
+	"id": "lunch_coupon"
 }
 
 item_combination = {
-	
+	"id": "combination",
+
+	"name": "combination",
 }
