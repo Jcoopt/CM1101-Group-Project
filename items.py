@@ -43,9 +43,9 @@ item_combination = {
 item_sneakers = {
 	"id": "sneakers",
 
-	"name": "a pair of sneaker",
+	"name": "a pair of sneakers",
 
-	"description": " ",
+	"description": "A battered pair of Nike Air Force 1s, the least squeaky shoes in the world.",
 
 	"mass": 0.1
 }
@@ -53,9 +53,9 @@ item_sneakers = {
 item_lunch_box = {
 	"id": "lunch_box",
 
-	"name": "a set of lunch",
+	"name": "a lunch box",
 
-	"description": " ",
+	"description": "Original Power Rangers lunch box in case you get hungry mid-heist.",
 
 	"mass": 0.1
 }
@@ -65,7 +65,7 @@ item_screwdriver = {
 
 	"name": "a screwdriver",
 
-	"description": " ",
+	"description": "Rusty and second hand but reliable",
 
 	"mass": 0.1
 }
@@ -75,7 +75,7 @@ item_wire_cutter = {
 
 	"name": "a wire cutter",
 
-	"description": " ",
+	"description": "Brand new wire cutters that can cut through anything in its path.",
 
 	"mass": 0.1
 }
@@ -86,7 +86,7 @@ item_ski_mask = {
 
 	"name": "a ski mask",
 
-	"description": " ",
+	"description": "Plain black ski mask to hide your identity",
 
 	"mass": 0.1
 }
@@ -96,7 +96,7 @@ item_backpack = {
 
 	"name": "a large backpack",
 
-	"description": " ",
+	"description": "A backpack with a large capacity to hold all of your 'winnings'.",
 
 	"mass": 0.1
 }
@@ -106,9 +106,9 @@ item_laptop = {
 
 	"name": "a laptop",
 
-	"description": " ",
+	"description": "The new MacBook Pro with built-in 3G for use literally anywhere!",
 
-	"mass": 0.1
+	"mass": 0.5
 }
 
 item_vodka = {
@@ -116,17 +116,17 @@ item_vodka = {
 
 	"name": "a bottle of vodka",
 
-	"description": " ",
+	"description": "A large 10l bottle of Smirnoff",
 
-	"mass": 0.1
+	"mass": 0.9
 }
 
-item_donats = {
-	"id": "donats",
+item_donuts = {
+	"id": "donuts",
 
-	"name": "some donats",
+	"name": "some donuts",
 
-	"description": " ",
+	"description": "An 11 piece box of Crispy Kreme's finest donut selection ",
 
-	"mass": 0.1
+	"mass": 0.2
 }
