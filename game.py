@@ -3,7 +3,6 @@
 import map
 from player import *
 from items import *
-from gameparser import *
 import banner
 import time
 
@@ -57,7 +56,7 @@ def print_room(room):
 def exit_leads_to(exits, direction):
     """
     """
-    return rooms[exits[direction]]["name"]
+    return map.areas[exits[direction]]["name"]
 
 
 def print_exit(direction, leads_to):
@@ -180,7 +179,7 @@ def menu(exits, room_items, inv_items):
 def move(exits, direction):
     """"""
 
-    return rooms[exits[direction]]
+    return map.areas[exits[direction]]
 
 def pregame_dialogue():
     """
@@ -190,6 +189,10 @@ def pregame_dialogue():
 
     """
     print("PLACEHOLDER. This will be dialogue someday")
+
+def pregame_shop():
+    print("PLACEHOLDER. This will be a shop someday")
+
 def pregame():
     """
     rough structure
@@ -207,6 +210,12 @@ def pregame():
     """
     banner.game_banner()
     time.sleep(3)
+    pregame_dialogue() #BE AWARE this may be a python file to import.
+    pregame_shop()
+    print("And so the heist begins") #PLACEHOLDER, just needs something to say its moving to game proper
+
+
+
 def main():
 
     won=False
@@ -219,8 +228,7 @@ def main():
         command = menu(current_room["exits"], current_room["items"], inventory)
 
         execute_command(command)
-        if len(rooms["Reception"]["items"]) ==6 :
-            won=True
+
     print("\n\nCongrats!")
 
 
