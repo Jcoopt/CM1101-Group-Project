@@ -3,7 +3,7 @@ item_keycard = {
 
 	"name": "a keycard to the security office",
 
-	"description": "The magic key that can get you into the security office!"
+	"description": "The magic key that can get you into the security office!",
 
 	"mass": 0.4
 }
@@ -11,9 +11,9 @@ item_keycard = {
 item_managers_credit_card = {
 	"id": "managers_credit_card",
 
-	"name": "manager's Amex credit card"
+	"name": "manager's Amex credit card",
 
-	"description": "The manager's shiny golden contactless AND limitless Amex card!"
+	"description": "The manager's shiny golden contactless AND limitless Amex card!",
 
 	"mass": 0.5
 }

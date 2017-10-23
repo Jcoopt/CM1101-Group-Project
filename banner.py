@@ -24,4 +24,3 @@ def game_banner():
 ''')
 
 
-game_banner()
