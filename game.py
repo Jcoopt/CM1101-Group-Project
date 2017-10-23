@@ -221,7 +221,7 @@ def main():
         execute_command(command)
         if len(rooms["Reception"]["items"]) ==6 :
             won=True
-    print("\n\nCongrats!\n\nYou completed set of conditions to achieve a win condition.\nEnjoy the warm feeling this gives you!")
+    print("\n\nCongrats!")
 
 
 if __name__ == "__main__":
