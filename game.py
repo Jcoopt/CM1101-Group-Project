@@ -22,7 +22,6 @@ def list_of_items(item_list):
     """
     """
     item_string=""
-   # print(item_list)
     for item in item_list:
         item_name=items.items[item]["name"]
         item_string="{0}, {1}".format(item_string,item_name)
