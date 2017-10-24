@@ -10,11 +10,11 @@ def print_option(location):
 
 def main_bar():
 	# pass	
-	print("What you gonna do?")
+	print("What are you gonna do?")
 	print_option(location_bar)
 	print()
 
-	print("Please input your answer by integer.")
+	print("Please input your answer as a number.")
 	user_iput = input("> ")
 	
 	if user_iput == 1:
@@ -52,9 +52,9 @@ def pre_home():
 
 
 
-bar_list = ["Buy some drink for manage.",
+bar_list = ["Buy drink for manager.",
 			"Steal manager's card.",
-			"Quit and go shop."]
+			"Quit and go to the shop."]
 
 bar_ans = 0
 
@@ -62,7 +62,7 @@ while True:
 	for i in range(len(bar_list)):
 		print(str(i + 1) + ". " + bar_list[i])
 
-	print("What you wanna do?")
+	print("What do you wanna do?")
 	bar_ans = int(input(">")) - 1
 
 	bar_list.remove(bar_list[bar_ans])
