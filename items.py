@@ -130,3 +130,23 @@ item_donuts = {
 
 	"mass": 0.2
 }
+
+item_energy_drink = {
+	"id": "energy_drink"
+	
+	"name": "an energy drink"
+	
+	"description": "A large can of Monster"
+	
+	"mass": 0.3
+}
+
+item_family_picture = {
+	"id": "family_picture"
+	
+	"name": "a useless family picture"
+	
+	"description": "a crumpled up picture, depicting three smiling people"
+	
+	"mass": 0.1
+}
