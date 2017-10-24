@@ -38,6 +38,47 @@ item_combination = {
     "mass": 0.1
 }
 
+item_paperclip = {
+	 "id": "paperclip",
+
+    "name": "random paperclip",
+    
+    "description": "Single paperclip that can be used as a picklock",
+    
+    "mass": 0.08
+}
+
+item_note = {
+	 "id": "note",
+
+    "name": "post-it note",
+    
+    "description": "A post-it note that contains the combination to the mini-safe.",
+    
+    "mass": 0.09
+}
+
+item_security_cameras = {
+	 "id": "security cameras",
+
+    "name": "security  cameras",
+    
+    "description": "Various security cameras around the premesis.",
+    
+    "mass": 9
+}
+
+item_gold = {
+	 "id": "gold",
+
+    "name": "GOLD",
+    
+    "description": "The treasure.",
+    
+    "mass": 1
+}
+
+
 
 # List of items you can buy in the shop
 item_sneakers = {
@@ -210,6 +251,19 @@ items = {
     "lunch_box": item_lunch_box,
     "Security Guard": item_security_guard,
     "Security Cameras": item_security_camera,
-    "Bank Tellers": item_tellers
+    "Bank Tellers": item_tellers,
+	"energy drink": item_energy_drink,
+	"family picture": item_family_picture,
+	"drill": item_drill,
+	"GOLD": item_gold,
+	"lunch coupon": item_lunch_coupon,
+	"manager's credit card": item_managers_credit_card,
+	"keycard": item_keycard,
+	"combination": item_combination,
+	"sneakers": item_sneakers,
+	"ski mask": item_ski_mask,
+	
+
+
 
 }
