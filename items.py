@@ -154,21 +154,17 @@ item_security_camera = {
 
 }
 
-items={
-	"donuts": item_donuts,
-	"vodka": item_vodka,
-	"laptop": item_laptop,
-	"backpack": item_backpack,
-	"mask": item_ski_mask,
-	"cutter": item_wire_cutter,
-    "screwdriver": item_screwdriver,
-    "lunch_box": item_lunch_box,
-    "Security Guard": item_security_guard,
-    "Security Cameras": item_security_camera
 
 
+item_tellers = {
+    "id": "teller",
+
+    "name": "a teller",
+
+    "description": "a Kiosk with a thick glass covering",
+
+    "mass": 8
 }
-
 
 item_drill = {
 	"id": "drill",
@@ -203,3 +199,17 @@ item_family_picture = {
 	"mass": 0.1
 }
 
+items = {
+    "donuts": item_donuts,
+    "vodka": item_vodka,
+    "laptop": item_laptop,
+    "backpack": item_backpack,
+    "mask": item_ski_mask,
+    "cutter": item_wire_cutter,
+    "screwdriver": item_screwdriver,
+    "lunch_box": item_lunch_box,
+    "Security Guard": item_security_guard,
+    "Security Cameras": item_security_camera,
+    "tellers": item_tellers
+
+}
