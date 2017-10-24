@@ -131,6 +131,19 @@ item_donuts = {
 	"mass": 0.2
 }
 
+item_drill = {
+	"id": "drill"
+	
+	"name": "a drill"
+	
+	"description": "a heavy drill, great for breaking into vaults"
+	
+	"mass": 0.8
+	
+	
+	
+	
+# more items found in bank
 item_energy_drink = {
 	"id": "energy_drink"
 	
