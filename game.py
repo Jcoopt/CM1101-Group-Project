@@ -1,9 +1,10 @@
 #!/usr/bin/python3
 
 import map
-from player import *
-from items import *
+import player
+import items
 import banner
+import gameparser
 import time
 
 
@@ -17,12 +18,13 @@ def calculate_carry_mass(inventory):
     return carry_mass
 
 
-def list_of_items(items):
+def list_of_items(item_list):
     """
     """
     item_string=""
-    for item in items:
-        item_name=item["name"]
+    print(item_list)
+    for item in item_list:
+        item_name=items.items[item]["name"]
         item_string="{0}, {1}".format(item_string,item_name)
     item_string =item_string[2:]
 
@@ -32,8 +34,8 @@ def list_of_items(items):
 def print_room_items(room):
     """
     """
-    if room["items"]!= []:
-        print( "There is {0} here.\n".format(list_of_items(room["items"])))
+    if map.areas[room]["contents"]!= []:
+        print( "There is {0} here.\n".format(list_of_items(map.areas[room]["contents"])))
 
 
 def print_inventory_items(items):
@@ -47,9 +49,9 @@ def print_room(room):
     """
 
     print()
-    print(room["name"].upper())
+    print(map.areas[room]["name"].upper())
     print()
-    print(room["description"])
+    print(map.areas[room]["description"])
     print()
     print_room_items(room)
 
@@ -75,7 +77,9 @@ def print_menu(exits, room_items, inv_items):
         print_exit(direction, exit_leads_to(exits, direction))
 
     for room_item in room_items:
-        print("TAKE {0} to take {1}.".format(room_item["id"].upper(),room_item["name"] ))
+        #print(room_item)
+       # print(items.items[room_item]["id"].upper()+ ":" + room_item["name"])
+        print("TAKE {0} to take {1}.".format(items.items[room_item]["id"].upper(),items.items[room_item]["name"] ))
 
     for inv_item in inv_items:
         print("DROP {0} to drop your {1}.".format(inv_item["id"].upper(),inv_item["name"] ))
@@ -93,8 +97,8 @@ def execute_go(direction):
     """ """
     global current_room
 
-    if is_valid_exit(current_room["exits"],direction):
-        current_room=move(current_room["exits"],direction)
+    if is_valid_exit(map.areas[current_room]["exits"],direction):
+        current_room=move(map.areas[current_room]["exits"],direction)
     else:
         print("You cannot go there.")
 
@@ -125,6 +129,7 @@ def execute_drop(item_id,current_room):
             print(item["Description"])
         else:
             print("You cannot inspect that")
+
 def execute_drop(item_id):
     """"""
     global current_room
@@ -180,7 +185,7 @@ def menu(exits, room_items, inv_items):
 
     user_input = input("> ")
 
-    normalised_user_input = normalise_input(user_input)
+    normalised_user_input = gameparser.normalise_input(user_input)
 
     return normalised_user_input
 
@@ -188,7 +193,7 @@ def menu(exits, room_items, inv_items):
 def move(exits, direction):
     """"""
 
-    return map.areas[exits[direction]]
+    return map.areas[exits[direction]]["name"]
 
 def pregame_dialogue():
     """
@@ -218,7 +223,7 @@ def pregame():
 
     """
     banner.game_banner()
-    time.sleep(3)
+    #time.sleep(3)
     pregame_dialogue() #BE AWARE this may be a python file to import.
     pregame_shop()
     print("And so the heist begins") #PLACEHOLDER, just needs something to say its moving to game proper
@@ -229,12 +234,15 @@ def main():
 
     won=False
     pregame()
+    global current_room
+    current_room=player.current_room
+    inventory= player.inventory
     while not (won):
-
+        print(current_room)
         print_room(current_room)
         print_inventory_items(inventory)
-        print("Your current carry weight is {}kg. \n".format(current_carry_mass))
-        command = menu(current_room["exits"], current_room["items"], inventory)
+        #print("Your current carry weight is {}kg. \n".format(current_carry_mass))
+        command = menu(map.areas[current_room]["exits"], map.areas[current_room]["contents"], inventory)
 
         execute_command(command)
 

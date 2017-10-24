@@ -142,6 +142,17 @@ item_security_guard={
     
 }
 
+item_security_camera = {
+    "id": "camera",
+
+    "name": "A Security Camera",
+
+    "description": "An oblong box on the ceiling with a lens on one end. if it weren't for the blinking light "
+                   "you would wonder if it were even working",
+
+    "mass": 0.2
+
+}
 
 items={
 	"donuts": item_donuts,
@@ -152,8 +163,8 @@ items={
 	"cutter": item_wire_cutter,
     "screwdriver": item_screwdriver,
     "lunch_box": item_lunch_box,
-    "security guard": item_security_guard
-
+    "Security Guard": item_security_guard,
+    "Security Cameras": item_security_camera
 
 
 }

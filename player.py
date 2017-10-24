@@ -4,4 +4,4 @@ import map
 inventory = []
 
 
-current_room = "PLACEHOLDER"
+current_room = "Lobby"

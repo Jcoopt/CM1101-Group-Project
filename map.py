@@ -9,7 +9,7 @@ location_entry_exit1 = {
 
     "exits": {"east": "Consultation Room"}, 
 
-    "contents": {"Security Cameras"},
+    "contents": ["Security Cameras"],
 
     "option1": {""}
   
@@ -24,7 +24,7 @@ location_entry_exit2 = {
 
     "exits": {"south": "Lobby"},
 
-    "contents": {"Security Cameras"},
+    "contents": ["Security Cameras"],
 
     "option1": {""}
   
@@ -39,7 +39,7 @@ location_consultation_room = {
 
     "exits": {"west": "Entrance/Exit", "south": "Manager's Office", "east": "Lobby", "west": "Entry/Exit1"},
 
-    "contents": {"Security Cameras"},
+    "contents": ["Security Cameras"],
 
     "option1": {""}
 }
@@ -53,7 +53,7 @@ location_managers_office = {
 
     "exits": {"north": "Consultation Room"} ,
 
-    "contents": {"Keycard", "Credit Card", "Security Cameras"},
+    "contents": ["Keycard", "Credit Card", "Security Cameras"],
 
     "option1": {""}
 }
@@ -67,7 +67,7 @@ location_lobby = {
 
     "exits": {"east": "Bank Tellers", "south": "Security Office", "west": "Consultation Room", "north": "Entry/Exit2"}, 
 
-    "contents": {"Security Guard"},
+    "contents": ["Security Guard"],
 
     "option1": {""}
 }
@@ -81,7 +81,7 @@ location_security_office = {
 
     "exits": {"north": "Lobby"}, 
 
-    "contents": {"Security Cameras"},
+    "contents": ["Security Cameras"],
 
     "option1": {""}
 }
@@ -95,7 +95,7 @@ location_bank_tellers = {
 
     "exits": {"west": "Lobby", "south": "Vault"}, 
 
-    "contents": {"Security Cameras", "Bank Tellers"},
+    "contents": ["Security Cameras", "Bank Tellers"],
 
     "option1": {""}
 }
@@ -112,7 +112,7 @@ location_vault = {
 
     "exits": {"south":"Bank Tellers"}, 
 
-    "contents": {"Security Cameras"},
+    "contents": ["Security Cameras"],
 
     "option1": {}
 }
