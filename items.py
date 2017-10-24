@@ -130,7 +130,7 @@ item_donuts = {
 
 	"mass": 0.2
 }
-<<<<<<< HEAD
+
 item_security_guard={
     "id": "Security",
 
