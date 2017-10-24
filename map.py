@@ -1,62 +1,60 @@
 import items
-#Incomplete!
-location_entry_exit1 = {
-    "name": "Main Entrance",
+location_entry_exit = {
+    "name": "Entrance/exit",
 
     "description":
     """The entrance to the bank. Several security cameras overhang the steel impact-resistant doors.
     Three unarmed security guards are patrolling the entrance.""",
 
-    "exits": {"east": "Consultation Room"}, 
+    "exits": {"east": "Consultation Room", "Security Cameras"}, 
 
-    "contents": ["Security Cameras"],
+    "contents": {"paperclip"}, 
 
-    "option1": {""}
-  
+
 }
 
-location_entry_exit2 = {
-    "name": "Secondary Entrance",
 
-    "description":
-    """The alternative entrance to the bank. Several security cameras overhang the steel impact-resistant doors.
-    No security guards are in sight, however the areas is fairly crowded with customers.""",
 
-    "exits": {"south": "Lobby"},
-
-    "contents": ["Security Cameras"],
-
-    "option1": {""}
-  
-}
-
-location_consultation_room = {
+location_consultation = {
     "name": "The Consultation Room",
 
     "description":
     """Consultation boothes are scattered around the room. It would appear that all employees are pre-occupied with customers,
     a single security camera watches from the south-east corner of the room.""",
 
-    "exits": {"west": "Entrance/Exit", "south": "Manager's Office", "east": "Lobby", "west": "Entry/Exit1"},
+    "exits": {"west": "Entrance/Exit", "south": "Manager's Office", "east": "Lobby", "north": "Janitors"},
 
-    "contents": ["Security Cameras"],
+    "contents": {"Security Cameras", "security guard", "fire alarm"},
 
-    "option1": {""}
+
+
 }
 
-location_managers_office = {
+
+
+location_managers = {
     "name": "The Manager's Office",
 
     "description":
     """The Manager of the bank resides here from 9:00 to 19:00. The manager keeps a close eye on security and is constantly on
     high alert. The Office itself is locked, entry is only permitted by using the intercom and requesting entry from the manager himself.""",
 
-    "exits": {"north": "Consultation Room"} ,
+    "exits": {"north": "Consultation Room"},
 
-    "contents": ["Keycard", "Credit Card", "Security Cameras"],
+    "contents": {"Keycard", "Security Cameras", "mini safe", "combination"},
 
-    "option1": {""}
+
+    #The safe contains a note with digits for the vault
+
+    #keycard opens the security room
+
+
+
+
 }
+
+
+
 
 location_lobby = {
     "name": "The Lobby",
@@ -65,14 +63,20 @@ location_lobby = {
     """The lobby of the bank. This area is the least guarded of the bank, employees enter and leave frequently,
     but only one security guard is to be seen. A mysterious object is located in the plant, south of the room.""",
 
-    "exits": {"east": "Bank Tellers", "south": "Security Office", "west": "Consultation Room", "north": "Entry/Exit2"}, 
+    "exits": {"east": "Bank Tellers", "south": "Security Office", "west": "Consultation Room", "north": "Toilets"}, 
 
-    "contents": ["Security Guard"],
+    "contents": {"Security Guard", "energy drink"},
 
-    "option1": {""}
+
+
+
 }
 
-location_security_office = {
+
+
+
+
+location_security = {
     "name": "The Security Office",
 
     "description":
@@ -81,12 +85,22 @@ location_security_office = {
 
     "exits": {"north": "Lobby"}, 
 
-    "contents": ["Security Cameras"],
+    "contents": {"Security Cameras", "note"},
 
-    "option1": {""}
+
+
+    #The note has the pin for the mini safe in the mangers office.
+
+    #Here the cameras can be turned off using the wire cutters/laptop
+
+
+
 }
 
-location_bank_tellers = {
+
+
+
+location_tellers = {
     "name": "Bank Tellers",
 
     "description":
@@ -95,10 +109,16 @@ location_bank_tellers = {
 
     "exits": {"west": "Lobby", "south": "Vault"}, 
 
-    "contents": ["Security Cameras", "Bank Tellers"],
+    "contents": {"Security Cameras", "Bank Tellers", "Security Guard"},
 
-    "option1": {""}
+
+
+
+
 }
+
+
+
 
 
 location_vault = {
@@ -112,18 +132,77 @@ location_vault = {
 
     "exits": {"south":"Bank Tellers"}, 
 
-    "contents": ["Security Cameras"],
+    "contents": {"Security Cameras", "GOLD"},
 
-    "option1": {}
+
+
+
+    #Gold is found here, depending on how many moves you have left is how much gold you can take.
+
+
+
+
 }
 
-areas = {
+
+
+
+
+location_janitor = {
+    "name": "Janitors",
+
+    "description":
+    """Utilities and other tools are stored here!.""",
+
+
+    "exits": {"south": "Consultation"}
+
+    "contents": {"wire cutters", "broom", "paper", "Janitors uniform", "Vent"}
+
+    #To get into the Janitors room you need a picklock or the keys
+
+
+    #Vent has a secreate passage to the vault, need screw driver or some other peice of equiment to open
+
+
+
+}
+
+
+location_Toilet = {
+    "name": "Toilets",
+
+    "description":
+    """Unisex tolients"""
+
+
+    "exits": {"south": "Lobby"}
+
+    "contents": {"keys", "toilet paper"}
+
+
+    #You noitce dropped keys that are used to open the jantors room
+        
+
+
+
+
+
+}
+
+
+
+
+
+
+Locations = {
 	"Vault": location_vault,
-	"Bank Tellers": location_bank_tellers,
-	"Security Office": location_security_office,
+	"Tellers": location_tellers,
+	"Security Office": location_security,
 	"Lobby": location_lobby,
-	"Manager's Office": location_managers_office,
-	"Consultation Room": location_consultation_room,
-	"Entry/Exit1": location_entry_exit1,
-	"Entry/Exit2": location_entry_exit2
+	"Manager's Office": location_managers,
+	"Consultation Room": location_consultation,
+	"Entrance/exit": location_entry_exit,
+    "Janitors": location_janitor
+    "Toilet": location_Toilet
 }
