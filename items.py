@@ -210,6 +210,6 @@ items = {
     "lunch_box": item_lunch_box,
     "Security Guard": item_security_guard,
     "Security Cameras": item_security_camera,
-    "tellers": item_tellers
+    "Bank Tellers": item_tellers
 
 }

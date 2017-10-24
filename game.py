@@ -22,7 +22,7 @@ def list_of_items(item_list):
     """
     """
     item_string=""
-    print(item_list)
+   # print(item_list)
     for item in item_list:
         item_name=items.items[item]["name"]
         item_string="{0}, {1}".format(item_string,item_name)
@@ -34,8 +34,8 @@ def list_of_items(item_list):
 def print_room_items(room):
     """
     """
-    if map.areas[room]["contents"]!= []:
-        print( "There is {0} here.\n".format(list_of_items(map.areas[room]["contents"])))
+    if room["contents"]!= []:
+        print( "There is {0} here.\n".format(list_of_items(room["contents"])))
 
 
 def print_inventory_items(items):
@@ -47,11 +47,11 @@ def print_inventory_items(items):
 def print_room(room):
     """
     """
-
+    #print(room)
     print()
-    print(map.areas[room]["name"].upper())
+    print(room["name"].upper())
     print()
-    print(map.areas[room]["description"])
+    print(room["description"])
     print()
     print_room_items(room)
 
@@ -97,8 +97,8 @@ def execute_go(direction):
     """ """
     global current_room
 
-    if is_valid_exit(map.areas[current_room]["exits"],direction):
-        current_room=move(map.areas[current_room]["exits"],direction)
+    if is_valid_exit(current_room["exits"],direction):
+        current_room=move(current_room["exits"],direction)
     else:
         print("You cannot go there.")
 
@@ -193,7 +193,7 @@ def menu(exits, room_items, inv_items):
 def move(exits, direction):
     """"""
 
-    return map.areas[exits[direction]]["name"]
+    return map.areas[exits[direction]]
 
 def pregame_dialogue():
     """
@@ -235,14 +235,14 @@ def main():
     won=False
     pregame()
     global current_room
-    current_room=player.current_room
+    current_room=map.areas["Lobby"]
     inventory= player.inventory
     while not (won):
-        print(current_room)
+        #print(current_room)
         print_room(current_room)
         print_inventory_items(inventory)
         #print("Your current carry weight is {}kg. \n".format(current_carry_mass))
-        command = menu(map.areas[current_room]["exits"], map.areas[current_room]["contents"], inventory)
+        command = menu(current_room["exits"], current_room["contents"], inventory)
 
         execute_command(command)
 
