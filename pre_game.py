@@ -38,7 +38,7 @@ main_shop()
 '''
 def pre_bar():
 	print(bar["description"] + "\n")
-	print("What you gonna do?")
+	print("What are you gonna do?")
 
 	for i in range(len(bar))
 
