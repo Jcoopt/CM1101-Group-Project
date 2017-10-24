@@ -130,6 +130,7 @@ item_donuts = {
 
 	"mass": 0.2
 }
+<<<<<<< HEAD
 item_security_guard={
     "id": "Security",
 
@@ -156,3 +157,38 @@ items={
 
 
 }
+
+
+item_drill = {
+	"id": "drill",
+	
+	"name": "a drill",
+	
+	"description": "a heavy drill, great for breaking into vaults",
+	
+	"mass": 0.8
+}
+	
+	
+	
+# more items found in bank
+item_energy_drink = {
+	"id": "energy_drink",
+	
+	"name": "an energy drink",
+	
+	"description": "A large can of Monster",
+	
+	"mass": 0.3
+}
+
+item_family_picture = {
+	"id": "family_picture",
+	
+	"name": "a useless family picture",
+	
+	"description": "a crumpled up picture, depicting three smiling people",
+	
+	"mass": 0.1
+}
+
