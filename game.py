@@ -119,7 +119,12 @@ def execute_take(item_id):
         print("You cannot take that.")
 
 
-
+def execute_drop(item_id,current_room):
+    for item in map.areas[current_room]:
+        if item==item_id:
+            print(item["Description"])
+        else:
+            print("You cannot inspect that")
 def execute_drop(item_id):
     """"""
     global current_room
@@ -159,7 +164,11 @@ def execute_command(command):
             execute_drop(command[1])
         else:
             print("Drop what?")
-
+    elif command[0] == "inspect":
+        if len(command) > 1:
+            execute_drop(command[1])
+        else:
+            print("inspect what?")
     else:
         print("This makes no sense.")
 
