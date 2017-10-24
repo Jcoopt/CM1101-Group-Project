@@ -195,7 +195,7 @@ location_Toilet = {
 
 
 
-Locations = {
+locations = {
 	"Vault": location_vault,
 	"Tellers": location_tellers,
 	"Security Office": location_security,
