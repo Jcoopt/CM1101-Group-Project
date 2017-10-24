@@ -6,9 +6,9 @@ location_entry_exit = {
     """The entrance to the bank. Several security cameras overhang the steel impact-resistant doors.
     Three unarmed security guards are patrolling the entrance.""",
 
-    "exits": {"east": "Consultation Room", "Security Cameras"}, 
+    "exits": {"east": "Consultation Room"},
 
-    "contents": {"paperclip"}, 
+    "contents": {"paperclip","Security Cameras"},
 
 
 }
@@ -155,7 +155,7 @@ location_janitor = {
     """Utilities and other tools are stored here!.""",
 
 
-    "exits": {"south": "Consultation"}
+    "exits": {"south": "Consultation"},
 
     "contents": {"wire cutters", "broom", "paper", "Janitors uniform", "Vent"}
 
@@ -173,10 +173,10 @@ location_Toilet = {
     "name": "Toilets",
 
     "description":
-    """Unisex tolients"""
+    """Unisex tolients""",
 
 
-    "exits": {"south": "Lobby"}
+    "exits":{"south": "Lobby"},
 
     "contents": {"keys", "toilet paper"}
 
@@ -203,6 +203,6 @@ Locations = {
 	"Manager's Office": location_managers,
 	"Consultation Room": location_consultation,
 	"Entrance/exit": location_entry_exit,
-    "Janitors": location_janitor
+    "Janitors": location_janitor,
     "Toilet": location_Toilet
 }
