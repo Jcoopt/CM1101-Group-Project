@@ -139,7 +139,7 @@ item_drill = {
 	"description": "a heavy drill, great for breaking into vaults"
 	
 	"mass": 0.8
-	
+}
 	
 	
 	
