@@ -71,7 +71,7 @@ item_screwdriver = {
 }
 
 item_wire_cutter = {
-	"id": "wire_cutter",
+	"id": "cutter",
 
 	"name": "a wire cutter",
 
@@ -82,7 +82,7 @@ item_wire_cutter = {
 
 # List of items you can find in your home
 item_ski_mask = {
-	"id": "ski_mask",
+	"id": "mask",
 
 	"name": "a ski mask",
 
@@ -129,4 +129,30 @@ item_donuts = {
 	"description": "An 11 piece box of Crispy Kreme's finest donut selection ",
 
 	"mass": 0.2
+}
+item_security_guard={
+    "id": "Security",
+
+    "name": "A security Guard",
+
+    "description": "A slightly pudgy middle aged man with a penchant for Donuts",
+
+    "mass": 0.2
+    
+}
+
+
+items={
+	"donuts": item_donuts,
+	"vodka": item_vodka,
+	"laptop": item_laptop,
+	"backpack": item_backpack,
+	"mask": item_ski_mask,
+	"cutter": item_wire_cutter,
+    "screwdriver": item_screwdriver,
+    "lunch_box": item_lunch_box,
+    "security guard": item_security_guard
+
+
+
 }
