@@ -109,10 +109,11 @@ def print_ch_by_ch(text,wait):
 
 
 def display_start_dialog():
-    intro_pt1 = """You are in a rustic bar in the Upper West Side of Manhattan. \n\nIt's a friday night and you'd much rather be at home with Netflix and a bottle of Jack Daniels,
-    but your good friend Joe insisted on meeting for a drink to discuss yet another one of the 'big ideas' he so often has.
-    \nJoe is a janitor and he usually comes to you with these worthless notions after a long shift, but this time he looks serious.
-    \n \nJoe: I've been thinking..."""
+    intro_pt1 = "You are in a rustic bar in the Upper West Side of Manhattan. \n\nIt's a friday night and you'd much " \
+                "rather be at home with Netflix and a bottle of Jack Daniels,but your good friend Joe insisted on" \
+                " meeting for a drink to discuss yet another one of the 'big ideas' he so often has.\nJoe is a janitor " \
+                "and he usually comes to you with these worthless notions after a long shift, but this time he " \
+                "looks serious. \n \nJoe: I've been thinking..."
 
     print_ch_by_ch(intro_pt1, 0.01)
 
