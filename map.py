@@ -1,4 +1,6 @@
 import items
+from items import *
+
 #Incomplete!
 location_entry_exit1 = {
     "name": "Main Entrance",
@@ -126,4 +128,32 @@ areas = {
 	"Consultation Room": location_consultation_room,
 	"Entry/Exit1": location_entry_exit1,
 	"Entry/Exit2": location_entry_exit2
+}
+
+
+
+# ------------------------------------------- #
+# pre_heist part map (don't add it to arears!)
+# ------------------------------------------- #
+location_bar = {
+    # story description and dialog (incomplete)
+    "description": '''Story Part - BAR''',
+
+    "items": [item_drinks]
+}
+
+
+location_shop = {
+    # story description and dialog (incomplete)
+    "description:": '''Story Part - SHOP''',
+
+    "items": [item_sneakers, item_lunch_box, item_screwdriver, item_wire_cutter]
+}
+
+
+location_home = {
+    # story description and dialog (incomplete)
+    "description:": '''Sory Part - HOME''',
+
+    "items": [item_ski_mask, item_backpack, item_laptop, item_vodka, item_donats]
 }
