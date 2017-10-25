@@ -1,4 +1,8 @@
 from items import *
+from gameparser import *
+import player
+global inventory
+inventory= player.inventory
 location_bar = {
     # story description and dialog (incomplete)
     "description": '''Story Part - BAR''',
@@ -10,23 +14,20 @@ location_shop = {
     # story description and dialog (incomplete)
     "description:": '''Story Part - SHOP''',
 
-    "items": [item_sneakers, item_lunch_box, item_screwdriver, item_wire_cutter]
+    "items": [item_sneakers, item_lunch_box, item_screwdriver, item_wire_cutter,item_laptop]
 }
 
-""""
+
 location_home = {
     # story description and dialog (incomplete)
-    "description:": '''Sory Part - HOME''',
+    "description:": '''Story Part - HOME''',
 
     "items": [item_ski_mask, item_backpack, item_laptop, item_vodka, item_donuts],
-
-	"Manager's Office": location_managers,
-	"Consultation Room": location_consultation,
-	"Entrance/Exit": location_entry_exit,
-    "Janitors": location_janitor,
-    "Toilets": location_Toilet
 }
-"""
+
+shop_items={
+
+}
 def logic_box_balance(balance, value):
     if balance - value >= 0:
         return 0
@@ -55,13 +56,7 @@ def pre_game_print_option(location):
 
 
         print(str(i) + ") " + "LEAVE to leave the shop and back to home.")
-    else:
-        for item in location["items"]:
-            print(str(i) + ") " + item["action"] + " " + item["id"].upper() + " to " + item["action"].lower() + " " +
-                  item["name"] + "." + " (Free, " + str(item["mass"]) + "kg)")
-            i += 1
 
-        print(str(i) + ") " + "SLEEP to sleep and go to the next day.")
 
 
 def pre_game_print_balance():
@@ -85,7 +80,13 @@ def pre_game_excute_buy(item_id):
     global balance
     global mass
     buy_status = False
+    if item_index[item_id] in location_shop["items"]:
+            inventory.append(item_id)
+            location_shop["items"].remove(item_index[item_id])
+            print("you have bought {}".format(item_index[item_id]["name"]))
 
+    """
+    print(location_shop["items"])
     for i in range(len(pre_game_location["items"])):
         if item_id in pre_game_location["items"][i]["id"] and logic_box_balance(balance, pre_game_location["items"][i][
             "value"]) == 0 and logic_box_mass(mass, pre_game_location["items"][i]["mass"]) == 0:
@@ -119,8 +120,7 @@ def pre_game_excute_buy(item_id):
 
         print("You cannot buy this item.\n")
         print(i)
-
-
+        """
 def pre_game_excute_take(item_id):
     global mass
     take_status = False
@@ -156,14 +156,10 @@ def pre_game_excute(command):
     if command[0] == "buy":
         if len(command) > 1:
             pre_game_excute_buy(command[1])
+            return True
         else:
             print("Buy what?\n")
-
-    elif command[0] == "take":
-        if len(command) > 1:
-            pre_game_excute_take(command[1])
-        else:
-            print("Take what?\n")
+            return True
 
     elif command[0] == "drink":
         if len(command) > 1:
@@ -171,19 +167,11 @@ def pre_game_excute(command):
         else:
             print("Drink what?\n")
 
-    elif command[0] == "leave" and pre_game_location == location_bar:
-        print("You left the shop and go to the shop.\n")
+    elif command[0] == "leave":
+        print("You leave the shop and go home.\n")
         pre_game_location = location_shop
         return False
 
-    elif command[0] == "leave" and pre_game_location == location_shop:
-        print("You left the shop and back to home.\n")
-        pre_game_location = location_home
-        return False
-
-    elif command[0] == "sleep" and pre_game_location == location_home:
-        print("You sleep!\n")
-        return False
 
     else:
         print("This makes no sense.\n")
@@ -212,26 +200,15 @@ def pre_game_bar():
 
 def pre_game_shop():
     # print("") <-- print the story
-
-    while True:
+    user_input=True
+    while user_input:
         pre_game_print_option(location_shop)
         user_input = pre_game_excute(pre_game_read_user_input())
 
-        if user_input is False:
-            break
-
-
-def pre_game_home():
-    # print("") <-- print the story
-
-    while True:
-        pre_game_print_option(location_home)
-        user_input = pre_game_excute(pre_game_read_user_input())
-
-        if user_input is False:
-            break
-
 # --------- main pre-game part --------- #
 
+def pre_game_main():
+    #pre_game_bar()
+    pre_game_shop()
 
-pre_game_shop()
+pre_game_main()

@@ -2,7 +2,7 @@ import items
 import map
 from map import *
 
-inventory = ["wirecutters", "lunchcoupon", "laptop"] #just to test cutting action, will be picked up during pregame
+inventory = [] #just to test cutting action, will be picked up during pregame
 
 # player default budget
 balance = 100

@@ -214,6 +214,7 @@ item_laptop = {
 	"description": "The new MacBook Pro with built-in 3G for use literally anywhere!",
 
 	"mass": 0.5,
+    "value": 500,
 
 	"action": ["Take"],
 
@@ -487,7 +488,7 @@ item_index = {
     "laptop": item_laptop, #done
     "backpack": item_backpack,
     "mask": item_ski_mask,
-    "wirecutters": item_wire_cutter, #done
+    "cutter": item_wire_cutter, #done
     "screwdriver": item_screwdriver,
     "lunchbox": item_lunch_box,
     "securityguard": item_security_guard, #done
