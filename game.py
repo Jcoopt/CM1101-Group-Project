@@ -43,8 +43,7 @@ def print_inventory_items(items):
 def print_room(room):
 #Print the current rooms name, descriptions and contents. Formatted nicely.
     print()
-    print(room["name"].upper())
-    print()
+    current_room["banner"]()
     print(room["description"])
     print()
     print_room_items(room)
