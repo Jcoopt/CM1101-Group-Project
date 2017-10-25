@@ -1,9 +1,4 @@
 import items
-
-from items import *
-
-#Incomplete!
-
 location_entry_exit = {
     "name": "Entrance/Exit",
 
@@ -29,7 +24,7 @@ location_consultation = {
 
     "exits": {"west": "Entrance/Exit", "south": "Manager's Office", "east": "Lobby", "north": "Janitors"},
 
-    "contents": ["securitycamera", "securityguard", "firealarm"]
+    "contents": ["securitycamera", "securityguard", "screwdriver"]
 
 
 
@@ -46,7 +41,7 @@ location_managers = {
 
     "exits": {"north": "Consultation Room"},
 
-    "contents": ["keycard", "securitycamera", "minisafe", "combination"]
+    "contents": ["keycard", "securitycamera",]
 
 
     #The safe contains a note with digits for the vault
@@ -90,7 +85,7 @@ location_security = {
 
     "exits": {"north": "Lobby"}, 
 
-    "contents": ["securitycamera", "note", "controlpanel", "securityguard"]
+    "contents": ["securitycamera", "controlpanel", "securityguard"]
 
 
 
@@ -114,14 +109,13 @@ location_tellers = {
 
     "exits": {"west": "Lobby", "south": "Vault"}, 
 
-    "contents": ["securitycamera", "banktellers", "securityguard"]
+    "contents": ["securitycamera", "banktellers", "securityguard", "note"]
 
 
 
 
 
 }
-
 
 
 
@@ -144,12 +138,7 @@ location_vault = {
 
     #Gold is found here, depending on how many moves you have left is how much gold you can take.
 
-
-
-
 }
-
-
 
 
 
@@ -162,14 +151,12 @@ location_janitor = {
 
     "exits": {"south": "Consultation Room"},
 
-    "contents": ["wirecutters", "broom", "paper", "janitorsuniform", "vent"]
+    "contents": ["wirecutters", "vent"]
 
     #To get into the Janitors room you need a picklock or the keys
 
 
     #Vent has a secreate passage to the vault, need screw driver or some other peice of equiment to open
-
-
 
 }
 
@@ -184,33 +171,20 @@ location_Toilet = {
 
     "contents": ["keys", "toiletpaper"]
 
-
     #You noitce dropped keys that are used to open the jantors room
 
 }
 
 
 
-
-
-
 locations = {
 	"Vault": location_vault,
-    "Toilets": location_Toilet,
 	"Bank Tellers": location_tellers,
 	"Security Office": location_security,
 	"Lobby": location_lobby,
 	"Manager's Office": location_managers,
 	"Consultation Room": location_consultation,
 	"Entrance/Exit": location_entry_exit,
-    "Janitors":location_janitor
-
+    "Janitors": location_janitor,
+    "Toilets": location_Toilet
 }
-
-
-
-# ------------------------------------------- #
-# pre_heist part map (don't add it to arears!)
-# ------------------------------------------- #
-
-

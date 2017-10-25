@@ -15,6 +15,10 @@ item_drinks = {
 
 
 #note: keep IDs lowercasee
+#Every item in the game is stored here. Including the id, name, description, mass, action and undo-action of said item.
+#The items are stored as dicitonaries, making it easy to access their values using key values.
+#The dictionaries themselves are accessed through the item_index dictionary found at the bottom of the file.
+
 
 item_keycard = {
 	"id": "keycard",
@@ -45,7 +49,7 @@ item_managers_credit_card = {
 item_lunch_coupon = {
     "id": "lunchcoupon",
 
-    "name": "Free meal deal coupon",
+    "name": "Lunch coupon",
     
     "description": "Coupon for a free meal deal at The Corner Shop (which are so bad they should be free anyway).",
 
@@ -88,7 +92,7 @@ item_note = {
     "description": "A post-it note that contains the combination to the mini-safe.",
     
 
-    "action": ["Take"],
+    "action": ["Inspect"],
 
     "undo_action": "Drop"
 }
@@ -119,7 +123,6 @@ item_sneakers = {
 
     "value": 50,
 
-
 	"action": ["Wear"],
 
 	"undo_action": "Drop"
@@ -130,10 +133,9 @@ item_lunch_box = {
 
 	"name": "a Lunch box",
 
-	"description": "Original Power Rangers lunch box in case you get hungry mid-heist.","value": 50,
+	"description": "Original Power Rangers lunch box in case you get hungry mid-heist.",
 
-
-
+    "value":20,
 
 	"action": ["Take"],
 
@@ -145,22 +147,23 @@ item_screwdriver = {
 
 	"name": "a Screwdriver",
 
-	"description": "Rusty and second hand but reliable","value": 50,
+	"description": "Rusty and second hand but reliable",
 
-
+"value":20,
 	"action": ["Take"],
 
 	"undo_action": "Drop"
 }
 
 item_wire_cutter = {
-	"id": "cutter",
+	"id": "wirecutter",
 
 	"name": "a wire cutter",
 
-	"description": "Brand new wire cutters that can cut through anything in its path.","value": 50,
+	"description": "Brand new wire cutters that can cut through anything in its path.",
 
 	"action": ["Take"],
+"value":20,
 
 	"undo_action": "Drop"
 }
@@ -250,7 +253,7 @@ item_security_guard = {
 item_security_camera = {
     "id": "securitycamera",
 
-    "name": "A Security Camera",
+    "name": "Security Camera",
 
     "description": "An oblong box on the ceiling with a lens on one end. if it weren't for the blinking light "
                    "you would wonder if it were even working",
@@ -303,7 +306,7 @@ item_energy_drink = {
 	
 
 
-	"action": ["Take"],
+	"action": ["Drink"],
 
 	"undo_action": "Drop"
 }
@@ -423,7 +426,7 @@ item_mini_safe= {
 	"description": "There could be money in this.",
 
 
-	"action": ["Steal from"],
+	"action": ["Look inside"],
 
 	"undo_action": "Replace contents"
 }
@@ -454,39 +457,38 @@ item_vault_door= {
 }
 
 
-item_index = {
+item_index = { #This is the item index, many functions will use this dictionary to access item data.
     "donuts": item_donuts, #done
-    "vodka": item_vodka,
+    "vodka": item_vodka, #done
     "laptop": item_laptop, #done
-    "backpack": item_backpack,
-    "mask": item_ski_mask,
-    "cutter": item_wire_cutter, #done
-    "screwdriver": item_screwdriver,
-    "lunchbox": item_lunch_box,
+    "backpack": item_backpack, #scrap?
+    "mask": item_ski_mask, #done
+    "wirecutters": item_wire_cutter, #done
+    "screwdriver": item_screwdriver, #done
+    "lunchbox": item_lunch_box, #scrap?
     "securityguard": item_security_guard, #done
     "securitycamera": item_security_camera, #done
-    "banktellers": item_tellers,
-	"energydrink": item_energy_drink,
-	"familypicture": item_family_picture,
+    "banktellers": item_tellers, #unused
+	"energydrink": item_energy_drink, #done
+	"familypicture": item_family_picture, #nah
 	"drill": item_drill, #done
 	"gold": item_gold, #done
 	"lunchcoupon": item_lunch_coupon, #done
-	"managerscreditcard": item_managers_credit_card,
+	"managerscreditcard": item_managers_credit_card, #pregame handled?
 	"keycard": item_keycard, #done
 	"combination": item_combination, #done
-	"sneakers": item_sneakers,
-	"skimask": item_ski_mask,
-	"paperclip": item_paperclip,
-	"firealarm": item_fire_alarm,
-	"note": item_note,
-	"keys": item_keys,
-	"toiletpaper": item_toilet_paper,
-	"broom": item_broom,
-	"paper": item_paper,
-	"janitorsuniform": item_janitor_uniform,
+	"sneakers": item_sneakers, #done - add noise to save
+	"skimask": item_ski_mask, #done
+	"paperclip": item_paperclip, #done
+	"firealarm": item_fire_alarm, #scrap
+	"note": item_note, #done
+	"keys": item_keys, #keys
+	"toiletpaper": item_toilet_paper, #scrap
+	"broom": item_broom, #useless?
+	"paper": item_paper,#scap
+	"janitorsuniform": item_janitor_uniform, #nah
 	"vent": item_vent, #done
-	"minisafe": item_mini_safe, 
+	"minisafe": item_mini_safe, #scrap
 	"controlpanel": item_control_panel, #done
 	"vaultdoor":item_vault_door #done
-
 }

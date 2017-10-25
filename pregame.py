@@ -6,12 +6,6 @@ import player
 global inventory
 inventory= player.inventory
 
-location_bar = {
-    # story description and dialog (incomplete)
-    "description": '''Story Part - BAR''',
-
-    "items": [item_drinks]
-}
 
 location_shop = {
     # story description and dialog (incomplete)
@@ -21,50 +15,19 @@ location_shop = {
 }
 
 
-location_home = {
-    # story description and dialog (incomplete)
-    "description:": '''Story Part - HOME''',
-
-    "items": [item_ski_mask, item_backpack, item_laptop, item_vodka, item_donuts],
-}
-
-shop_items={
-
-}
-def logic_box_balance(balance, value):
-    if balance - value >= 0:
-        return 0
-    else:
-        return 1
-
-
-def logic_box_mass(mass, value):
-    if mass + value <= max_mass:
-        return 0
-    else:
-        return 1
-
-
 # --------- print menu --------- #
 def pre_game_print_option(location):
     i = 1
     print("Which of the following action will you take?")
-
-    if location == location_bar:
-        # INCOMPLETE
-        pass
-    elif location == location_shop:
+    if location == location_shop:
         for item in location["items"]:
-            print("{0}) {1} to buy {2}. (£{3})".format(i,item["id"].upper(),item["name"],item["value"]))
-
-
+            print(" {0} to buy {1}. (${2})".format(item["id"].upper(),item["name"],item["value"]))
         print(str(i) + ") " + "LEAVE to leave the shop and back to home.")
 
 
 
 def pre_game_print_balance():
     print("<-- You have £" + str(balance) + " left -->")
-
 
 def pre_game_print_mass():
     print("<-- Total mass of your inventory is " + str(mass) + " kg" + ". -->\n")
@@ -88,67 +51,6 @@ def pre_game_excute_buy(item_id):
             location_shop["items"].remove(item_index[item_id])
             print("you have bought {}".format(item_index[item_id]["name"]))
 
-    """
-    print(location_shop["items"])
-    for i in range(len(pre_game_location["items"])):
-        if item_id in pre_game_location["items"][i]["id"] and logic_box_balance(balance, pre_game_location["items"][i][
-            "value"]) == 0 and logic_box_mass(mass, pre_game_location["items"][i]["mass"]) == 0:
-            balance -= pre_game_location["items"][i]["value"]
-            mass += pre_game_location["items"][i]["mass"]
-            print("------------------------------------")
-            print("You bought " + pre_game_location["items"][i]["name"] + "!")
-            print(balance)
-            print(mass)
-            print("------------------------------------\n")
-            inventory.append(pre_game_location["items"][i])
-            pre_game_location["items"].remove(pre_game_location["items"][i])
-            buy_status = True
-            break
-
-    if not buy_status:
-        if not buy_status and logic_box_balance(balance, pre_game_location["items"][i]["value"]) == 1:
-            print("------------------------------------")
-            print("You bought " + pre_game_location["items"][i]["name"] + "!")
-            print(balance)
-            print(mass)
-            print("------------------------------------\n")
-            print("You don't have enough money to buy this.")
-        elif not buy_status and logic_box_mass(mass, pre_game_location["items"][i]["mass"]) == 1:
-            print("------------------------------------")
-            print("You bought " + pre_game_location["items"][i]["name"] + "!")
-            print(balance)
-            print(mass)
-            print("------------------------------------\n")
-            print("It too heavy!")
-
-        print("You cannot buy this item.\n")
-        print(i)
-        """
-def pre_game_excute_take(item_id):
-    global mass
-    take_status = False
-
-    for i in range(len(pre_game_location["items"])):
-        if item_id in pre_game_location["items"][i]["id"] and logic_box_mass(mass, pre_game_location["items"][i][
-            "mass"]) == 0:
-            mass += pre_game_location["items"][i]["mass"]
-            print("------------------------------------")
-            print("You take " + pre_game_location["items"][i]["name"] + "!")
-            print(balance)
-            print(mass)
-            print("------------------------------------\n")
-            inventory.append(pre_game_location["items"][i])
-            pre_game_location["items"].remove(pre_game_location["items"][i])
-            take_status = True
-            break
-
-    if not take_status:
-        print("You can't take this item.\n")
-
-
-def pre_game_excute_drink():
-    pass
-
 
 def pre_game_excute(command):
     global pre_game_location
@@ -163,12 +65,6 @@ def pre_game_excute(command):
         else:
             print("Buy what?\n")
             return True
-
-    elif command[0] == "drink":
-        if len(command) > 1:
-            pre_game_excute_drink(command[1])
-        else:
-            print("Drink what?\n")
 
     elif command[0] == "leave":
         print("You leave the shop and go home.\n")
