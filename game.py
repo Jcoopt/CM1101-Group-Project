@@ -299,7 +299,7 @@ def execute_bribe_command(command):
                 valid_offer = True
                 offer = item_index[item]["id"]
         if valid_offer:
-            if offer in[ "lunchcoupon" ,"donuts" ] :
+            if offer in[ "coupon" ,"donuts" ] :
                 print("This is exactly what I needed. Thanks!") #Succesful bribe.
                 print("I will tell the other guards to go on break.")
                 guards = 0 #This is important, at this point the player can actually progress in the game.
