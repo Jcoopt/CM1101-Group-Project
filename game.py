@@ -168,120 +168,115 @@ def execute_drop(item_id):
     if not(inv_changed):
         print("You cannot drop that.")
 
-
-def execute_command(command):
-    """
-    """
-    global current_room
-    global suspicion
-    global cameras
-    global guards
-
-    if 0 == len(command):
-        return
-
+def execute_interact_command(command):
+    if len(command) > 1:
+        execute_interact(command[1])
+    else:
+        print("Take what?")
+def execute_go_command(command):
     if command[0] == "go":
         if len(command) > 1:
             execute_go(command[1])
         else:
             print("Go where?")
 
-    elif command[0] == "take" or command[0] == "steal" or command[0] == "pick" or command[0] == "wear" or command[0] == "drink":
-        if len(command) > 1:
-            execute_interact(command[1])
+def execute_vent_command(command):
+    if len(command) > 1 and command[1] == "vent":
+        if command[0] == "unscrew":
+            print("You unscrew the vent and climb inside and end up at the...")
+            item_vent["action"] = "Climb through"
         else:
-            print("Take what?")
+            print("You climb inside and end up at the...")
+        current_room = location_managers
+    else:
+        print("Unscrew what?")
 
-    elif command[0] == "unscrew" or command[0] == "climb":
-        if len(command) > 1 and command[1] == "vent":
-            if command[0] == "unscrew":
-                print("You unscrew the vent and climb inside and end up at the...")
-                item_vent["action"] = "Climb through"
+def execute_punch_command(command):
+    global suspicion
+    if len(command) > 1 and (command[1] == "security" or command[2] == "guard"):
+        suspicion = suspicion + 1
+        print("\"What are you doing!?\"")
+        print("Suspicion levels are now at: " + str(suspicion))
+
+def execute_bribe_command(command):
+    global suspicion
+    if len(command) > 1 and (command[1] == "security" or command[2] == "guard"):
+        valid_offer = False
+        print("What are you offering?")
+        for item in inventory:
+            print("Offer " + item_index[item]["name"] + ".")
+        offer = input("I will give you my: ")
+        for item in inventory:
+            if offer.lower() in item_index[item]["name"].lower():
+                valid_offer = True
+                offer = item_index[item]["id"]
+        if valid_offer:
+            if offer in[ "lunchcoupon" ,"donuts" ] :
+                print("This is exactly what I needed. Thanks!")
+                print("I will tell the other guards to go on break.")
+                guards = 0
+                for key, room in locations.items():
+                    if "securityguard" in room["contents"]:
+                        room["contents"].remove("securityguard")
+                inventory.remove(offer)
             else:
-                print("You climb inside and end up at the...")
-            current_room = location_managers
-        else:
-            print("Unscrew what?")
-
-    elif command[0] == "punch":
-        if len(command) > 1 and (command[1] == "security" or command[2] == "guard"):
-            suspicion = suspicion + 1
-            print("\"What are you doing!?\"")
-            print("Suspicion levels are now at: " + str(suspicion))
-
-    elif command[0] == "bribe":
-        if len(command) > 1 and (command[1] == "security" or command[2] == "guard"):
-            valid_offer = False
-            print("What are you offering?")
-            for item in inventory:
-                print("Offer " + item_index[item]["name"] + ".")
-            offer = input("I will give you my: ")
-            for item in inventory:
-                if offer.lower() in item_index[item]["name"].lower():
-                    valid_offer = True
-                    offer = item_index[item]["id"]
-            if valid_offer:
-                if offer == "lunchcoupon" or offer == "donuts"  :
-                    print("This is exactly what I needed. Thanks!")
-                    print("I will tell the other guards to go on break.")
-                    guards = 0
-                    for key, room in locations.items():
-                        if "securityguard" in room["contents"]:
-                            room["contents"].remove("securityguard")
-                    inventory.remove(offer)
-                else:
-                    print("Erm...I don't want this.")
-                    suspicion = suspicion + 1
-                    print("Suspicion levels are now at: " + str(suspicion))
-            else:
-                print("What? I don't even know what you just said.")
+                print("Erm...I don't want this.")
                 suspicion = suspicion + 1
                 print("Suspicion levels are now at: " + str(suspicion))
-
-    elif (command[0] == "deactivate" and current_room["name"] == "Security Office"):
-        if (cameras == 0):
-            print("You've already deactivated all the cameras.")
-            return
         else:
-            cameras = 0
-            for key, room in locations.items():
-                if "securitycamera" in room["contents"]:
-                    room["contents"].remove("securitycamera")
-            print("You deactivated all the camera's in the bank!")
-
-    elif command[0] == "cut":
-        if len(command) > 1 and (command[1] == "security" or command[2] == "cameras"):
-            if "wirecutters" in inventory:
-                current_room["contents"].remove("securitycamera")
-                cameras = cameras - 1
-                print("You cut the camera.")
-                print(str(cameras) + " cameras remain in the bank...")
-            else:
-                print("You try to cut the cable with your hand. It fails to cut.")
-                return
-
-    elif command[0] == "apologise":
-        if len(command) > 1 and (command[1] == "security" or command[2] == "guard"):
-            if suspicion > 0:
-                suspicion = suspicion - 1
-            print("\"Don't worry about it.\"")
+            print("What? I don't even know what you just said.")
+            suspicion += 1
             print("Suspicion levels are now at: " + str(suspicion))
 
-    elif command[0] == "drop":
-        if len(command) > 1:
-            execute_drop(command[1])
+def execute_deactivate_command(command):
+    global cameras
+    if (cameras == 0):
+        print("You've already deactivated all the cameras.")
+        return
+    else:
+        cameras = 0
+        for key, room in locations.items():
+            if "securitycamera" in room["contents"]:
+                room["contents"].remove("securitycamera")
+        print("You deactivated all the camera's in the bank!")
+
+def execute_cut_command(command):
+    global cameras
+    if len(command) > 1 and (command[1] == "security" or command[2] == "cameras"):
+        if "wirecutters" in inventory:
+            current_room["contents"].remove("securitycamera")
+            cameras = cameras - 1
+            print("You cut the camera.")
+            print(str(cameras) + " cameras remain in the bank...")
         else:
-            print("Drop what?")
-    elif command[0] == "inspect":
-        if len(command) > 1:
-            execute_drop(command[1])
-        else:
-            print("inspect what?")
-    elif command[0] == "save":
-        create_save()
-    elif command[0] == "load":
-        load_save()
-    elif command[0] == "connect" and command[1] == "laptop":
+            print("You try to cut the cable with your hand. It fails to cut.")
+            return
+def execute_apologise_command(command):
+    global suspicion
+    if len(command) > 1 and (command[1] == "security" or command[2] == "guard"):
+        if suspicion > 0:
+            suspicion = suspicion - 1
+        print("\"Don't worry about it.\"")
+        print("Suspicion levels are now at: " + str(suspicion))
+def execute_drop_command(command):
+    if len(command) > 1:
+        execute_drop(command[1])
+    else:
+        print("Drop what?")
+def execute_inspect_command(command):
+    if len(command) > 1:
+        execute_drop(command[1])
+    else:
+        print("inspect what?")
+
+def execute_save_command(command):
+    create_save()
+
+def execute_load_command(command):
+    load_save()
+def execute_connect_command(command):
+    global suspicion
+    if command[1] == "laptop":
         print("You attempt to connect your Laptop to the Wi-Fi...")
         print("...Connected")
         print("What do you want to do: ")
@@ -333,7 +328,40 @@ def execute_command(command):
             suspicion = 10
             print("Why did you do that...")
             return
+    else:
+        print("connect to what?")
+def execute_command(command):
+    """
+    """
+    global current_room
+    global suspicion
+    global cameras
+    global guards
 
+    command_dict={
+        "go":execute_go_command,
+        "take": execute_interact_command,
+        "steal": execute_interact_command,
+        "pick": execute_interact_command,
+        "wear":execute_interact_command,
+        "drink":execute_interact_command,
+        "unscrew": execute_vent_command,
+        "climb": execute_vent_command,
+        "punch": execute_punch_command,
+        "bribe": execute_bribe_command,
+        "deactivate": execute_deactivate_command,
+        "apologise": execute_apologise_command,
+        "drop": execute_drop_command,
+        "inspect": execute_inspect_command,
+        "save": execute_save_command,
+        "load": execute_load_command,
+        "connect": execute_connect_command,
+    }
+
+    if 0 == len(command):
+        return
+    if command[0] in command_dict:
+        command_dict[command[0]](command)
     #VAULT HANDLING
     elif current_room["name"] == "Vault":
         if command[0] == "use" and command[1] == "drill":
@@ -491,8 +519,6 @@ def load_save():
             elif line == "~ GUARDS ~":
                 data_reading = line
                 continue
-
-###################################################
 
             if data_reading == "~ INVENTORY ~":
                 #print("writing inv")
