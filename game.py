@@ -32,7 +32,7 @@ def list_of_items(item_list):
 def print_room_items(room):
 #Prints the items in the room using the list_of_items function
     if room["contents"]!= []:
-        print("There is {0} here.\n".format(list_of_items(room["contents"])))
+        print("The following are here: {0}.\n".format(list_of_items(room["contents"])))
 
 
 def print_inventory_items(items):
@@ -166,11 +166,13 @@ def execute_go(direction):
                 print("It seems that none of the guards heard you...")
                 return
             else:
-                if (cameras > 0):
-                    print("Oh no! The cameras have spotted you!")
-                if (guards > 0):
-                    print("Uh-oh, a guard was patrolling and spotted you!")
-                suspicion = 10 #Set suspicion to 10, instantly ending the game.
+                vault_check=input("Are you sure you want to enter the vault? Some guards or cameras remain. y/n?")
+                if vault_check in ["y","Y"]:
+                    if (cameras > 0):
+                        print("Oh no! The cameras have spotted you!")
+                    if (guards > 0):
+                        print("Uh-oh, a guard was patrolling and spotted you!")
+                    suspicion = 10 #Set suspicion to 10, instantly ending the game.
         elif (current_room["exits"][direction] == "Manager's Office"):
             if "paperclip" in inventory and manager_locked: #Paperclip minigame disalogue #2
                 print("The door is locked.")
@@ -224,12 +226,6 @@ def execute_interact(item_id):
     if not(inv_changed):
         print("You cannot do that.")
 
-#def execute_drop(item_id,current_room):
-    #for item in locations[current_room]:
-        #if item_id in item:
-           # print(item["Description"])
-       # else:
-            #print("You cannot inspect that")
 
 def execute_drop(item_id): 
     #Function handling item dropping
@@ -290,15 +286,17 @@ def execute_bribe_command(command):
     if len(command) > 1 and (command[1] == "security" or command[1] == "guard"): #command checking
         valid_offer = False
         print("What are you offering?")
+
         for item in inventory:
-            print("Offer " + item_index[item]["name"] + ".") #Display items in your inventory to offer.
+
+            print(item_index[item]["id"].upper()+"to Offer " + item_index[item]["name"] + ".")
+
         offer = input("I will give you my: ")
-        for item in inventory:
-            if offer.lower() in [ "lunchcoupon" ,"donuts","lunch coupon", "coupon", item_index[item]["name"].lower()]:
-                valid_offer = True
-                offer = item_index[item]["id"]
+        if offer.lower() in inventory:
+            valid_offer = True
+            offer = item_index[item]["id"]
         if valid_offer:
-            if offer in[ "lunchcoupon" ,"donuts","lunch coupon", "coupon" ] :
+            if offer in ["coupon","donuts"]:
                 print("This is exactly what I needed. Thanks!") #Succesful bribe.
                 print("I will tell the other guards to go on break.")
                 guards = 0 #This is important, at this point the player can actually progress in the game.
@@ -332,7 +330,7 @@ def execute_cut_command(command):
     #Handles cutting cameras manually.
     global cameras
     if len(command) > 1 and (command[1] == "security" or command[1] == "cameras"):
-        if "wirecutters" in inventory: #Player MUST have wirecutters in order to do this.
+        if "cutters" in inventory: #Player MUST have wirecutters in order to do this.
             current_room["contents"].remove("securitycamera")
             cameras = cameras - 1
             print("You cut the camera.")
