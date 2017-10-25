@@ -464,7 +464,7 @@ def execute_command(command):
                 print("You manage to unscrew the bolts on the door, removing the metal frame.")
                 print("The base of the door collapses and makes a loud noise.")
                 suspicion = suspicion + 1 #Drilling open the vault door works...but does increase suspicion due to the sound created.
-                current_room["contents"].remove("vault")
+                current_room["contents"].remove("vaultdoor")
                 current_room["contents"].append("gold")
             else:
                 print("You start drilling the door with your hand.") #Failed drilling response
@@ -516,7 +516,7 @@ def pregame_routine():
     """
 
     banner.game_banner()
-    time.sleep(2)
+    time.sleep(4)
     user_name=pregame.display_start_dialog()
     inventory = pregame.pre_game_shop()
 
@@ -528,14 +528,6 @@ def static_item_handle():
 
     global suspicion
     global noise_level
-    if "skimask" in inventory: #If the player is wearing a ski mask
-        suspicion = suspicion + 6 #They will automatically lose, as ski masks are a red flag to security.
-        print("The guards notice your skimask, the tackle you to the ground.")
-        inventory.remove("skimask")
-    if "vodka" in inventory: #If the player is drunk..
-        suspicion = 10  #They will lose automatically, you cannot rob a bank drunk.
-        print("You stumble around the bank drunk. The guards escort you out.")
-        inventory.remove("vodka")
     if "energydrink" in inventory: #Drinking energy drink. Does nothing.
         print("You drink your energy drink. You feel energised.")
         inventory.remove("energydrink")
