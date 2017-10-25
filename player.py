@@ -4,18 +4,6 @@ from map import *
 
 inventory = [] #just to test cutting action, will be picked up during pregame
 
-# player default budget
-balance = 100
-
-# player current mass
-mass = 0
-
-# max mass
-max_mass = 5
-
-#current_room = "PLACEHOLDER"
-
-#pre_game_location = location_shop
 
 
 # --------- game status --------- #

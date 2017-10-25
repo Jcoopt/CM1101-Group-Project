@@ -16,14 +16,6 @@ janitor_locked = True
 security_locked = True
 noise_level = 0
 
-def calculate_carry_mass(inventory):
-    """"""
-    carry_mass=0
-    for item in inventory:
-        carry_mass += item_index[item]["mass"]
-    return carry_mass
-#Used to calculcate the current mass of the player's inventory
-#Currently unused
 
 def list_of_items(item_list):
     #Displays items in a nicely formatted list
@@ -251,16 +243,14 @@ def execute_drop(item_id):
     global current_room
     global inventory
     for item in inventory:
-        if (item_id in item_index[item]["id"].lower()):
-            current_room["contents"].append(item)
-            inventory.remove(item)
         if (item_id in item_index[item]["id"].lower()): #If the item exists within the inventory.
             current_room["contents"].append(item) #Add the item to the current rooms contents.
             inventory.remove(item) #..and remove it from your inventory.
-            inv_changed=True
-            current_carry_mass = calculate_carry_mass(inventory)
-    if not(inv_changed):
-        print("You cannot drop that.")
+        else:
+            item_in_inventory=False
+    if not (item_in_inventory):
+        print("You cannnot drop that.")
+
 
 
 def execute_interact_command(command):
@@ -501,10 +491,10 @@ def execute_command(command):
         print("This makes no sense.")
 
 def menu(exits, room_items, inv_items):
-    """"""
-    #Menu function used to print the menu
-    #Also handles the user input
-
+    """
+    Menu function used to print the menu
+    Also handles the user input
+    """
     print_menu(exits, room_items, inv_items)
 
     user_input = input("> ") #User input
@@ -522,13 +512,7 @@ def move(exits, direction):
 def pregame_dialogue():
     """
     prints the pregame dialogue
-
-
-
-
     """
-
-
     banner.game_banner()
     time.sleep(2)
 
@@ -581,11 +565,10 @@ def static_item_handle():
             print("Suspicion levels are at: " + str(suspicion))
 
 
-
 def main():
     #Main function, called upon loading module.
-
-    won=False #Set the game Won boolean to false, as the game has just started.
+    success=False
+    game_running=True #Set the game Won boolean to false, as the game has just started.
     inventory=pregame_routine() #Start pregame.
     global current_room
     global suspicion
@@ -593,16 +576,16 @@ def main():
     suspicion = 0
     current_room= locations["Lobby"] #Set the first room to lobby, the starting location.
     turns_taken=0
-    while not (won): #While the game has not been won.s
+    while game_running: #While the game has not been won.s
         turns_taken+=1
         if (suspicion > 6):
-            print("\n\n\n\nYOU WERE CAUGHT\n\n\n\n")
-            input()
-            return
+            game_running=False
+
+
         if ("gold" in inventory):
-            print("\n\n\n\nYOU WON! THE HEIST WAS SUCCESFUL!\n\n\n\n")
-            input()
-            return
+            success=True
+            game_running=False
+
         static_item_handle()
         print_room(current_room)
         print_inventory_items(inventory)
@@ -610,8 +593,11 @@ def main():
 
         execute_command(command) #Executes the command inputed by the user.
 
-    print("\n\nCongrats!")
+    if success:
+        print("\n\n\n\nYOU WON! THE HEIST WAS SUCCESSFUL!\n\n\n\n")
 
+    else:
+        print("\n\n\n\nYOU WERE CAUGHT\n\n\n\n")
 
 #Save Bank Heist game
 
