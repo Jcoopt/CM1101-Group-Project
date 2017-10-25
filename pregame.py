@@ -7,7 +7,7 @@ global inventory
 inventory= player.inventory
 
 
-shop_items=[item_sneakers, item_lunch_box, item_screwdriver, item_wire_cutter,item_laptop]
+shop_items=[item_sneakers, item_lunch_coupon, item_screwdriver, item_wire_cutter,item_laptop]
 
 # --------- print menu --------- #
 def pre_game_print_option():

@@ -47,13 +47,13 @@ item_managers_credit_card = {
 }
 
 item_lunch_coupon = {
-    "id": "lunchcoupon",
+    "id": "coupon",
 
     "name": "Lunch coupon",
     
     "description": "Coupon for a free meal deal at The Corner Shop (which are so bad they should be free anyway).",
 
-
+     "value":10,
 
     "action": ["Take"],
 
@@ -128,20 +128,6 @@ item_sneakers = {
 	"undo_action": "Drop"
 }
 
-item_lunch_box = {
-	"id": "lunch_box",
-
-	"name": "a Lunch box",
-
-	"description": "Original Power Rangers lunch box in case you get hungry mid-heist.",
-
-    "value":10,
-
-	"action": ["Take"],
-
-	"undo_action": "Drop"
-}
-
 item_screwdriver = {
     "id": "screwdriver",
 
@@ -155,7 +141,7 @@ item_screwdriver = {
 }
 
 item_wire_cutter = {
-	"id": "wirecutter",
+	"id": "cutters",
 
 	"name": "a wire cutter",
 
@@ -462,9 +448,8 @@ item_index = { #This is the item index, many functions will use this dictionary 
     "laptop": item_laptop, #done
     "backpack": item_backpack, #scrap?
     "mask": item_ski_mask, #done
-    "wirecutters": item_wire_cutter, #done
+    "cutters": item_wire_cutter, #done
     "screwdriver": item_screwdriver, #done
-    "lunchbox": item_lunch_box, #scrap?
     "securityguard": item_security_guard, #done
     "securitycamera": item_security_camera, #done
     "banktellers": item_tellers, #unused
@@ -472,7 +457,7 @@ item_index = { #This is the item index, many functions will use this dictionary 
 	"familypicture": item_family_picture, #nah
 	"drill": item_drill, #done
 	"gold": item_gold, #done
-	"lunchcoupon": item_lunch_coupon, #done
+	"coupon": item_lunch_coupon, #done
 	"managerscreditcard": item_managers_credit_card, #pregame handled?
 	"keycard": item_keycard, #done
 	"combination": item_combination, #done
