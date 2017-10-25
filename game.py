@@ -592,8 +592,9 @@ def main():
 
     suspicion = 0
     current_room= locations["Lobby"] #Set the first room to lobby, the starting location.
-
+    turns_taken=0
     while not (won): #While the game has not been won.s
+        turns_taken+=1
         if (suspicion > 6):
             print("\n\n\n\nYOU WERE CAUGHT\n\n\n\n")
             input()
