@@ -212,31 +212,5 @@ locations = {
 # ------------------------------------------- #
 # pre_heist part map (don't add it to arears!)
 # ------------------------------------------- #
-location_bar = {
-    # story description and dialog (incomplete)
-    "description": '''Story Part - BAR''',
-
-    "items": [item_drinks]
-}
 
 
-location_shop = {
-    # story description and dialog (incomplete)
-    "description:": '''Story Part - SHOP''',
-
-    "items": [item_sneakers, item_lunch_box, item_screwdriver, item_wire_cutter]
-}
-
-
-location_home = {
-    # story description and dialog (incomplete)
-    "description:": '''Sory Part - HOME''',
-
-    "items": [item_ski_mask, item_backpack, item_laptop, item_vodka, item_donuts],
-
-	"Manager's Office": location_managers,
-	"Consultation Room": location_consultation,
-	"Entrance/Exit": location_entry_exit,
-    "Janitors": location_janitor,
-    "Toilets": location_Toilet
-}

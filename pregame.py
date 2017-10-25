@@ -1,3 +1,32 @@
+from items import *
+location_bar = {
+    # story description and dialog (incomplete)
+    "description": '''Story Part - BAR''',
+
+    "items": [item_drinks]
+}
+
+location_shop = {
+    # story description and dialog (incomplete)
+    "description:": '''Story Part - SHOP''',
+
+    "items": [item_sneakers, item_lunch_box, item_screwdriver, item_wire_cutter]
+}
+
+""""
+location_home = {
+    # story description and dialog (incomplete)
+    "description:": '''Sory Part - HOME''',
+
+    "items": [item_ski_mask, item_backpack, item_laptop, item_vodka, item_donuts],
+
+	"Manager's Office": location_managers,
+	"Consultation Room": location_consultation,
+	"Entrance/Exit": location_entry_exit,
+    "Janitors": location_janitor,
+    "Toilets": location_Toilet
+}
+"""
 def logic_box_balance(balance, value):
     if balance - value >= 0:
         return 0
@@ -22,10 +51,8 @@ def pre_game_print_option(location):
         pass
     elif location == location_shop:
         for item in location["items"]:
-            print(item)
-            # print(str(i) + ") " + item["action"] + " " + item["id"].upper() + " to " + item["action"].lower() + " " + item["name"] + "." + " (" + "£" + str(item["value"]) + ", " + str(item["mass"]) + "kg)")
-            # print("{0}){1} {2} to {3} {4}. (£{5}, {6}kg".format(i,item["action"],item["id"].upper(),item["action"].lower(),item["name"],item["value"],item["mass"]))
-            i += 1
+            print("{0}) {1} to buy {2}. (£{3}, {4}kg)".format(i,item["id"].upper(),item["name"],item["value"],item["mass"]))
+
 
         print(str(i) + ") " + "LEAVE to leave the shop and back to home.")
     else:
@@ -207,3 +234,4 @@ def pre_game_home():
 # --------- main pre-game part --------- #
 
 
+pre_game_shop()
