@@ -5,7 +5,7 @@ from time import *
 from map import *
 import time
 import pregame
-
+import sqlite3
 import banner
 
 #Global variables used to control certain conditions
@@ -509,6 +509,14 @@ def move(exits, direction):
     #Returns the location in which the player will end up.
     return locations[exits[direction]]
 
+def add_to_score_database(name,turns):
+    SQLconn = sqlite3.connect('Scores.db')
+    SQLcursor = SQLconn.cursor()
+    SQLcursor.execute("INSERT INTO Scores VALUES(?,?)",(name,turns))                                                                                     # a statement
+    SQLconn.commit()
+    SQLconn.close()
+
+
 def pregame_dialogue():
     """
     prints the pregame dialogue
@@ -587,7 +595,10 @@ def main():
             game_running=False
 
         static_item_handle()
+
         print_room(current_room)
+        print("SAVE to save your progress")
+        print("LOAD to load your progress from your last saved game")
         print_inventory_items(inventory)
         command = menu(current_room["exits"], current_room["contents"], inventory)
 
@@ -595,9 +606,11 @@ def main():
 
     if success:
         print("\n\n\n\nYOU WON! THE HEIST WAS SUCCESSFUL!\n\n\n\n")
+        print("You took {} turns".format(turns_taken))
 
     else:
         print("\n\n\n\nYOU WERE CAUGHT\n\n\n\n")
+        print("You took {} turns".format(turns_taken))
 
 #Save Bank Heist game
 
@@ -731,5 +744,6 @@ def create_save():
 
 
 if __name__ == "__main__":
+
     main()
 
