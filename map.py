@@ -1,4 +1,6 @@
 import items
+from banner import *
+
 location_entry_exit = {
     "name": "Entrance/Exit",
 
@@ -8,11 +10,10 @@ location_entry_exit = {
 
     "exits": {"east": "Consultation Room"},
 
-    "contents": ["paperclip","securitycamera", "securityguard"]
+    "contents": ["paperclip","securitycamera", "securityguard"],
 
-
+    "banner": exit_banner
 }
-
 
 
 location_consultation = {
@@ -24,12 +25,10 @@ location_consultation = {
 
     "exits": {"west": "Entrance/Exit", "south": "Manager's Office", "east": "Lobby", "north": "Janitors"},
 
-    "contents": ["securitycamera", "securityguard", "screwdriver"]
+    "contents": ["securitycamera", "securityguard", "screwdriver"],
 
-
-
+    "banner": consultation_banner
 }
-
 
 
 location_managers = {
@@ -41,19 +40,10 @@ location_managers = {
 
     "exits": {"north": "Consultation Room"},
 
-    "contents": ["keycard", "securitycamera",]
+    "contents": ["keycard", "securitycamera"],
 
-
-    #The safe contains a note with digits for the vault
-
-    #keycard opens the security room
-
-
-
-
+    "banner": manage_banner
 }
-
-
 
 
 location_lobby = {
@@ -65,15 +55,10 @@ location_lobby = {
 
     "exits": {"east": "Bank Tellers", "south": "Security Office", "west": "Consultation Room", "north": "Toilets"}, 
 
-    "contents": ["securityguard", "energydrink"]
+    "contents": ["securityguard", "energydrink"],
 
-
-
-
+    "banner": lobby_banner
 }
-
-
-
 
 
 location_security = {
@@ -85,19 +70,10 @@ location_security = {
 
     "exits": {"north": "Lobby"}, 
 
-    "contents": ["securitycamera", "controlpanel", "securityguard"]
+    "contents": ["securitycamera", "controlpanel", "securityguard"],
 
-
-
-    #The note has the pin for the mini safe in the mangers office.
-
-    #Here the cameras can be turned off using the wire cutters/laptop
-
-
-
+    "banner": security_banner
 }
-
-
 
 
 location_tellers = {
@@ -109,15 +85,10 @@ location_tellers = {
 
     "exits": {"west": "Lobby", "south": "Vault"}, 
 
-    "contents": ["securitycamera", "banktellers", "securityguard", "note"]
+    "contents": ["securitycamera", "banktellers", "securityguard", "note"],
 
-
-
-
-
+    "banner": bank_banner
 }
-
-
 
 
 location_vault = {
@@ -131,15 +102,10 @@ location_vault = {
 
     "exits": {"south":"Bank Tellers"}, 
 
-    "contents": ["securitycamera", "vaultdoor", "securityguard"]
+    "contents": ["securitycamera", "vaultdoor", "securityguard"],
 
-
-
-
-    #Gold is found here, depending on how many moves you have left is how much gold you can take.
-
+    "banner": vault_banner
 }
-
 
 
 location_janitor = {
@@ -151,13 +117,9 @@ location_janitor = {
 
     "exits": {"south": "Consultation Room"},
 
-    "contents": ["wirecutters", "vent"]
+    "contents": ["wirecutters", "vent"],
 
-    #To get into the Janitors room you need a picklock or the keys
-
-
-    #Vent has a secreate passage to the vault, need screw driver or some other peice of equiment to open
-
+    "banner": janitors_banner
 }
 
 
@@ -169,12 +131,10 @@ location_Toilet = {
 
     "exits":{"south": "Lobby"},
 
-    "contents": ["keys", "toiletpaper"]
+    "contents": ["keys", "toiletpaper"],
 
-    #You noitce dropped keys that are used to open the jantors room
-
+    "banner": toilets_banner
 }
-
 
 
 locations = {
