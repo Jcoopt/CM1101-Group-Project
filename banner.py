@@ -1,3 +1,4 @@
+# Opening banner for our game
 def game_banner():
 	print('''
                                                                                                                               
@@ -24,6 +25,7 @@ def game_banner():
 ''')
 
 
+# Ending banner for our game
 def end_game_banner():
 	print('''
   /$$$$$$                                                     /$$               /$$             /$$     /$$                              
@@ -52,6 +54,7 @@ def end_game_banner():
 ''')
 
 
+# Banner for display your current location
 def shop_banner():
   print('''
 ──────────────
@@ -62,6 +65,7 @@ def shop_banner():
 ''')
 
 
+# Banner for display your current location
 def bar_banner():
 	print('''
 ───────────
@@ -72,6 +76,7 @@ def bar_banner():
 ''')
 
 
+# Banner for display your current location
 def exit_banner():
 	print('''
 ─────────────
@@ -81,7 +86,8 @@ def exit_banner():
 ─────────────
 ''')
 
-	
+
+# Banner for display your current location	
 def consultation_banner():
 	print('''
 ─────────────────────────────────────────────────
@@ -91,7 +97,8 @@ def consultation_banner():
 ─────────────────────────────────────────────────
 ''')
 
-	
+
+# Banner for display your current location	
 def manage_banner():
 	print('''
 ─────────────────────────────────────────
@@ -101,7 +108,8 @@ def manage_banner():
 ─────────────────────────────────────────
 ''')
 
-	
+
+# Banner for display your current location	
 def lobby_banner():
 	print('''
 ─────────────────
@@ -111,7 +119,8 @@ def lobby_banner():
 ─────────────────
 ''')
 
-	
+
+# Banner for display your current location	
 def security_banner():
 	print('''
 ──────────────────────────────────────────
@@ -121,7 +130,8 @@ def security_banner():
 ──────────────────────────────────────────
 ''')
 
-	
+
+# Banner for display your current location	
 def bank_banner():
 	print('''
 ─────────────────────────────────────
@@ -131,7 +141,8 @@ def bank_banner():
 ─────────────────────────────────────
 ''')
 
-	
+
+# Banner for display your current location	
 def vault_banner():
 	print('''
 ─────────────────
@@ -141,7 +152,8 @@ def vault_banner():
 ─────────────────
 ''')
 
-	
+
+# Banner for display your current location	
 def janitors_banner():
 	print('''
 ───────────────────────
@@ -151,7 +163,8 @@ def janitors_banner():
 ───────────────────────
 ''')
 
-	
+
+# Banner for display your current location
 def toilets_banner():
 	print('''
 ─────────────────────
