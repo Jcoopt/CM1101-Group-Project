@@ -2,6 +2,7 @@ import string
 from map import *
 from player import *
 
+<<<<<<< HEAD
 
 # --------- word filtering --------- #
 skip_words = ['a', 'about', 'all', 'an', 'another', 'any', 'around', 'at',
@@ -219,6 +220,16 @@ def pre_game_cal_budget(balance, value):
 # --------- main pre-game part --------- #
 def pre_game_bar():
 	# print("") <-- print the story
+=======
+def main_bar():
+	# pass	
+	print("What are you gonna do?")
+	print_option(location_bar)
+	print()
+
+	print("Please input your answer as a number.")
+	user_iput = input("> ")
+>>>>>>> 5262cfdefdaa33650652b986bb8affeab09fd938
 	
 	pre_game_print_option(location_bar)
 	pre_game_read_user_input()
@@ -267,7 +278,7 @@ print(inventory)
 '''
 def pre_bar():
 	print(bar["description"] + "\n")
-	print("What you gonna do?")
+	print("What are you gonna do?")
 
 	for i in range(len(bar))
 
@@ -281,9 +292,9 @@ def pre_home():
 
 
 
-bar_list = ["Buy some drink for manage.",
+bar_list = ["Buy drink for manager.",
 			"Steal manager's card.",
-			"Quit and go shop."]
+			"Quit and go to the shop."]
 
 bar_ans = 0
 
@@ -291,7 +302,7 @@ while True:
 	for i in range(len(bar_list)):
 		print(str(i + 1) + ". " + bar_list[i])
 
-	print("What you wanna do?")
+	print("What do you wanna do?")
 	bar_ans = int(input(">")) - 1
 
 	bar_list.remove(bar_list[bar_ans])
