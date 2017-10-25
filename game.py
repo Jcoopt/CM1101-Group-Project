@@ -66,10 +66,10 @@ def print_menu(exits, room_items, inv_items):
         print_exit(direction, exit_leads_to(exits, direction))
 
     for room_item in room_items:   
-       for act in item_index[room_item]["action"]: #For each action in the action list, for each item.
-             print(act.upper() + " " + item_index[room_item]["name"].upper() + " to " + act.lower() + " " + item_index[room_item]["name"])
-       if current_room["name"] == "Toilets" and ("laptop" in inventory): #Check if player is in the toilets, if so add additional option (laptop)
-        print("CONNECT LAPTOP to connect your laptop to the toilet Wi-Fi...")      
+        for act in item_index[room_item]["action"]: #For each action in the action list, for each item.
+            print(act.upper() + " " + item_index[room_item]["name"].upper() + " to " + act.lower() + " " + item_index[room_item]["name"])
+    if current_room["name"] == "Toilets" and ("laptop" in inventory): #Check if player is in the toilets, if so add additional option (laptop)
+        print("CONNECT LAPTOP to connect your laptop to the toilet Wi-Fi...")
     print()
     for inv_item in inv_items: #Print inventory items.
         print(item_index[inv_item]["undo_action"].upper() + " " + item_index[inv_item]["name"].upper() + " to " + item_index[inv_item]["undo_action"].lower() + " " + item_index[inv_item]["name"])
@@ -294,11 +294,11 @@ def execute_bribe_command(command):
             print("Offer " + item_index[item]["name"] + ".") #Display items in your inventory to offer.
         offer = input("I will give you my: ")
         for item in inventory:
-            if offer.lower() in item_index[item]["name"].lower():
+            if offer.lower() in [ "lunchcoupon" ,"donuts","lunch coupon", "coupon", item_index[item]["name"].lower()]:
                 valid_offer = True
                 offer = item_index[item]["id"]
         if valid_offer:
-            if offer in[ "lunchcoupon" ,"donuts" ] :
+            if offer in[ "lunchcoupon" ,"donuts","lunch coupon", "coupon" ] :
                 print("This is exactly what I needed. Thanks!") #Succesful bribe.
                 print("I will tell the other guards to go on break.")
                 guards = 0 #This is important, at this point the player can actually progress in the game.
@@ -517,14 +517,16 @@ def pregame_routine():
 
 
     """
+
     banner.game_banner()
     time.sleep(2)
+    #user_name=pregame.display_start_dialog()
     inventory = pregame.pre_game_shop()
 
     print("And so the heist begins") #PLACEHOLDER, just needs something to say its moving to game proper
 
-
-    return inventory
+    user_name="Tom"
+    return user_name,inventory
 def static_item_handle():
     #This function handles items that are your inventory, but are not interactable.
 
@@ -554,7 +556,7 @@ def main():
     #Main function, called upon loading module.
     success=False
     game_running=True #Set the game Won boolean to false, as the game has just started.
-    inventory=pregame_routine() #Start pregame.
+    name,inventory =pregame_routine() #Start pregame.
     global current_room
     global suspicion
 
@@ -584,7 +586,7 @@ def main():
     if success:
         print("\n\n\n\nYOU WON! THE HEIST WAS SUCCESSFUL!\n\n\n\n")
         print("You took {} turns".format(turns_taken))
-
+        add_to_score_database(name, turns_taken)
     else:
         print("\n\n\n\nYOU WERE CAUGHT\n\n\n\n")
         print("You took {} turns".format(turns_taken))
@@ -714,7 +716,7 @@ def create_save():
         new_save.write("~ SECURITY ~" + "\n")
         new_save.write(str(security_locked))
         print("Saved Succesfully.")
-    #new_save.close()
+
 
 
 
