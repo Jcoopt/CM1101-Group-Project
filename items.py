@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 item_keycard = {
 	"id": "keycard",
 
@@ -66,7 +66,6 @@ item_sneakers = {
 
 	"mass": 1,
 
-	# the price of this itme
 	"value": 50,
 
 	"action": "BUY"
@@ -178,20 +177,7 @@ item_vodka = {
 	"action": "DRINK"
 }
 
-item_donats = {
-	"id": "donats",
 
-	"name": "some donats",
-
-	"description": " ",
-
-	"mass": 0.1,
-
-	# the price of this itme
-	"value": 0,
-
-	"action": "TAKE"
-=======
 #note: keep IDs lowercasee
 
 item_keycard = {
@@ -689,5 +675,5 @@ item_index = {
 	"minisafe": item_mini_safe, 
 	"controlpanel": item_control_panel, #done
 	"vaultdoor":item_vault_door #done
->>>>>>> 5262cfdefdaa33650652b986bb8affeab09fd938
+
 }

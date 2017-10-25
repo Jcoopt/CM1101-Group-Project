@@ -1,14 +1,11 @@
 import items
-<<<<<<< HEAD
+
 from items import *
 
 #Incomplete!
-location_entry_exit1 = {
-    "name": "Main Entrance",
-=======
+
 location_entry_exit = {
     "name": "Entrance/Exit",
->>>>>>> 5262cfdefdaa33650652b986bb8affeab09fd938
 
     "description":
     """The entrance to the bank. Several security cameras overhang the steel impact-resistant doors.
@@ -199,14 +196,15 @@ location_Toilet = {
 
 locations = {
 	"Vault": location_vault,
+    "Toilets": location_Toilet,
 	"Bank Tellers": location_tellers,
 	"Security Office": location_security,
 	"Lobby": location_lobby,
-<<<<<<< HEAD
-	"Manager's Office": location_managers_office,
-	"Consultation Room": location_consultation_room,
-	"Entry/Exit1": location_entry_exit1,
-	"Entry/Exit2": location_entry_exit2
+	"Manager's Office": location_managers,
+	"Consultation Room": location_consultation,
+	"Entrance/Exit": location_entry_exit,
+    "Janitors":location_janitor
+
 }
 
 
@@ -234,12 +232,11 @@ location_home = {
     # story description and dialog (incomplete)
     "description:": '''Sory Part - HOME''',
 
-    "items": [item_ski_mask, item_backpack, item_laptop, item_vodka, item_donats]
-=======
+    "items": [item_ski_mask, item_backpack, item_laptop, item_vodka, item_donuts],
+
 	"Manager's Office": location_managers,
 	"Consultation Room": location_consultation,
 	"Entrance/Exit": location_entry_exit,
     "Janitors": location_janitor,
     "Toilets": location_Toilet
->>>>>>> 5262cfdefdaa33650652b986bb8affeab09fd938
 }

@@ -13,7 +13,6 @@ mass = 0
 # max mass
 max_mass = 5
 
-<<<<<<< HEAD
 current_room = "PLACEHOLDER"
 
 pre_game_location = location_shop
@@ -24,10 +23,9 @@ manage_status = True
 security_status = True
 camera_status = True
 # --------- game status --------- #
-=======
+
 current_room = "Lobby"
 current_carry_mass = 0
 suspicion = 0
 cameras = 6
 guards = 6
->>>>>>> 5262cfdefdaa33650652b986bb8affeab09fd938
