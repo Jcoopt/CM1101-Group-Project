@@ -20,7 +20,7 @@ def pre_game_print_option():
 
 
 def pre_game_print_balance(balance):
-    print("<-- You have £" + str(balance) + " left -->")
+    print("<-- You have $" + str(balance) + " left -->")
 
 # --------- print menu --------- #
 
@@ -33,22 +33,22 @@ def pre_game_read_user_input():
 def pre_game_excute_buy(item_id):
     global balance
 
-
-    if item_index[item_id] in shop_items:
-        if item_index[item_id]["value"] <= balance:
-            inventory.append(item_id)
-            shop_items.remove(item_index[item_id])
-            balance -= item_index[item_id]["value"]
-            print("you have bought {}".format(item_index[item_id]["name"]))
-        else:
-            print("You don't have the money to buy that")
-    else:
+    try:
+        if item_index[item_id] in shop_items:
+            if item_index[item_id]["value"] <= balance:
+                inventory.append(item_id)
+                shop_items.remove(item_index[item_id])
+                balance -= item_index[item_id]["value"]
+                print("\n\nyou have bought {}".format(item_index[item_id]["name"]))
+            else:
+                print("You don't have the money to buy that")
+    except:
         print("Buy what?")
 def pre_game_excute(command):
     global pre_game_location
 
     if 0 == len(command):
-        return
+        return True
 
     if command[0] == "buy":
         if len(command) > 1:
@@ -65,6 +65,7 @@ def pre_game_excute(command):
 
     else:
         print("This makes no sense.\n")
+        return True
 
 
 # --------- game excute part --------- #

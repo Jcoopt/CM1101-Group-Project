@@ -216,17 +216,12 @@ def execute_interact(item_id):
     #Used for picking up items.
     global current_room
     global inventory
+    inv_changed=False
     for item in current_room["contents"]:
         if item_id in item:
             inventory.append(item)
             current_room["contents"].remove(item)
-
-            if current_carry_mass + item_index[item]["mass"] < 3:
-                inventory.append(item)
-                current_room["contents"].remove(item)
-                inv_changed=True
-            else:
-                print("That is too heavy")
+            inv_changed=True
     if not(inv_changed):
         print("You cannot do that.")
 
