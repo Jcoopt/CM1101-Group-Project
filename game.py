@@ -225,7 +225,6 @@ def execute_interact(item_id):
                 inventory.append(item)
                 current_room["contents"].remove(item)
                 inv_changed=True
-                current_carry_mass = calculate_carry_mass(inventory) ##Ammend carry mass.
             else:
                 print("That is too heavy")
     if not(inv_changed):
@@ -518,21 +517,6 @@ def add_to_score_database(name,turns):
     SQLconn.close()
 
 
-def pregame_dialogue():
-    """
-    prints the pregame dialogue
-    """
-    banner.game_banner()
-    time.sleep(2)
-
-    #pregame.display_start_dialog()
-    inventory=pregame.pre_game_shop()
-
-
-    print("PLACEHOLDER. This will be dialogue someday")
-
-def pregame_shop():
-    print("PLACEHOLDER. This will be a shop someday")
 
 def pregame_routine():
     """
@@ -540,14 +524,12 @@ def pregame_routine():
 
     """
     banner.game_banner()
-
-    #time.sleep(3)
-    pregame_dialogue() #BE AWARE this may be a python file to import.
-    pregame_shop()
-    print("And so the heist begins") #PLACEHOLDER, just needs something to say its moving to game proper
-
+    time.sleep(2)
+    inventory = pregame.pre_game_shop()
 
     print("And so the heist begins") #PLACEHOLDER, just needs something to say its moving to game proper
+
+
     return inventory
 def static_item_handle():
     #This function handles items that are your inventory, but are not interactable.
