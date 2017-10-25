@@ -13,14 +13,13 @@ shop_items = [item_sneakers, item_lunch_coupon, item_screwdriver,item_laptop]
 # --------- print menu --------- #
 def pre_game_print_option():
     global balance
-    i = 1
     shop_banner()
+    i=1
     print("Which of the following action will you take?")
     for item in shop_items:
         print("{0}) BUY {1} to buy {2}. (${3})".format(i,item["id"].upper(),item["name"],item["value"]))
         print("   ({0})".format(item["description"]))
-        i += 1
-
+        i+=1
     print("{0}) LEAVE to leave the shop and back to home.".format(i))
 
 
@@ -87,7 +86,7 @@ def pre_game_excute(command):
 def pre_game_shop():
     # print("") <-- print the story
     global balance
-    balance = 50
+    balance = 70
     user_input = True
     while user_input:
         pre_game_print_option()

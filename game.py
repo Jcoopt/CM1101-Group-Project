@@ -286,15 +286,14 @@ def execute_bribe_command(command):
     if len(command) > 1 and (command[1] == "security" or command[1] == "guard"): #command checking
         valid_offer = False
         print("What are you offering?")
-
         for item in inventory:
-
-            print(item_index[item]["id"].upper()+"to Offer " + item_index[item]["name"] + ".")
+            print(item_index[item]["id"].upper()+" to Offer " + item_index[item]["name"] + ".")
 
         offer = input("I will give you my: ")
         if offer.lower() in inventory:
             valid_offer = True
-            offer = item_index[item]["id"]
+            offer = offer.lower()
+            print("OFFERING ",offer)
         if valid_offer:
             if offer in ["coupon","donuts"]:
                 print("This is exactly what I needed. Thanks!") #Succesful bribe.
@@ -556,7 +555,7 @@ def main():
     name,inventory =pregame_routine() #Start pregame.
     global current_room
     global suspicion
-
+    inventory.append("drill")
     suspicion = 0
     current_room= locations["Lobby"] #Set the first room to lobby, the starting location.
     turns_taken=0
