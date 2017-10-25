@@ -3,15 +3,17 @@ from gameparser import *
 import os
 import time
 import player
+from banner import *
 global inventory
-inventory= player.inventory
+inventory = player.inventory
 
 
-shop_items=[item_sneakers, item_lunch_coupon, item_screwdriver, item_wire_cutter,item_laptop]
+shop_items = [item_sneakers, item_lunch_coupon, item_screwdriver, item_wire_cutter,item_laptop]
 
 # --------- print menu --------- #
 def pre_game_print_option():
     global balance
+    shop_banner()
     print("Which of the following action will you take?")
     for item in shop_items:
         print("BUY {0} to buy {1}. (${2})".format(item["id"].upper(),item["name"],item["value"]))
@@ -77,8 +79,8 @@ def pre_game_excute(command):
 def pre_game_shop():
     # print("") <-- print the story
     global balance
-    balance=50
-    user_input=True
+    balance = 50
+    user_input = True
     while user_input:
         pre_game_print_option()
         pre_game_print_balance(balance)
@@ -88,9 +90,9 @@ def pre_game_shop():
 
 def print_ch_by_ch(text,wait):
     os.system('cls')
-    full_text=""
+    full_text = ""
     for ch in text:
-        full_text="{0}{1}".format(full_text, ch)
+        full_text = "{0}{1}".format(full_text, ch)
         print(full_text)
         time.sleep(wait)
         os.system('cls')

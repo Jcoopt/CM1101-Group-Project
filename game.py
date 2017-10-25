@@ -43,8 +43,7 @@ def print_inventory_items(items):
 def print_room(room):
 #Print the current rooms name, descriptions and contents. Formatted nicely.
     print()
-    print(room["name"].upper())
-    print()
+    current_room["banner"]()
     print(room["description"])
     print()
     print_room_items(room)
@@ -647,7 +646,6 @@ def load_save():
                 data_reading = line
                 continue
 
-        #####################################
 
             if data_reading == "~ INVENTORY ~": #These if blocks are checking the data_reading var to determine what to var to set the line's data to.
                 #print("writing inv")
@@ -722,6 +720,5 @@ def create_save():
 
 
 if __name__ == "__main__":
-    add_to_score_database("COLIN", 150)
-    main()
 
+    main()
