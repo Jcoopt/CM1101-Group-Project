@@ -14,7 +14,7 @@ def pre_game_print_option():
     global balance
     print("Which of the following action will you take?")
     for item in shop_items:
-        print(" {0} to buy {1}. (${2})".format(item["id"].upper(),item["name"],item["value"]))
+        print("BUY {0} to buy {1}. (${2})".format(item["id"].upper(),item["name"],item["value"]))
     print("LEAVE to leave the shop and back to home.")
 
 
