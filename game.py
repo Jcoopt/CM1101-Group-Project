@@ -4,6 +4,8 @@ from gameparser import *
 from time import *
 from map import *
 import time
+import pregame
+
 import banner
 
 #Global variables used to control certain conditions
@@ -14,14 +16,6 @@ janitor_locked = True
 security_locked = True
 noise_level = 0
 
-def calculate_carry_mass(inventory):
-    """"""
-    carry_mass=0
-    for item in inventory:
-        carry_mass += item_index[item]["mass"]
-    return carry_mass
-#Used to calculcate the current mass of the player's inventory
-#Currently unused
 
 def list_of_items(item_list):
     #Displays items in a nicely formatted list
@@ -222,10 +216,11 @@ def execute_interact(item_id):
     #Used for picking up items.
     global current_room
     global inventory
-    global current_carry_mass
-    inv_changed=False
     for item in current_room["contents"]:
         if item_id in item:
+            inventory.append(item)
+            current_room["contents"].remove(item)
+
             if current_carry_mass + item_index[item]["mass"] < 3:
                 inventory.append(item)
                 current_room["contents"].remove(item)
@@ -235,7 +230,6 @@ def execute_interact(item_id):
                 print("That is too heavy")
     if not(inv_changed):
         print("You cannot do that.")
-
 
 #def execute_drop(item_id,current_room):
     #for item in locations[current_room]:
@@ -248,16 +242,16 @@ def execute_drop(item_id):
     #Function handling item dropping
     global current_room
     global inventory
-    global current_carry_mass
-    inv_changed=False
     for item in inventory:
         if (item_id in item_index[item]["id"].lower()): #If the item exists within the inventory.
             current_room["contents"].append(item) #Add the item to the current rooms contents.
             inventory.remove(item) #..and remove it from your inventory.
-            inv_changed=True
-            current_carry_mass = calculate_carry_mass(inventory)
-    if not(inv_changed):
-        print("You cannot drop that.")
+        else:
+            item_in_inventory=False
+    if not (item_in_inventory):
+        print("You cannnot drop that.")
+
+
 
 def execute_interact_command(command):
     if len(command) > 1:
@@ -497,10 +491,10 @@ def execute_command(command):
         print("This makes no sense.")
 
 def menu(exits, room_items, inv_items):
-    """"""
-    #Menu function used to print the menu
-    #Also handles the user input
-
+    """
+    Menu function used to print the menu
+    Also handles the user input
+    """
     print_menu(exits, room_items, inv_items)
 
     user_input = input("> ") #User input
@@ -518,35 +512,34 @@ def move(exits, direction):
 def pregame_dialogue():
     """
     prints the pregame dialogue
-
-
-
     """
+    banner.game_banner()
+    time.sleep(2)
+
+    #pregame.display_start_dialog()
+    inventory=pregame.pre_game_shop()
+
+
     print("PLACEHOLDER. This will be dialogue someday")
 
 def pregame_shop():
     print("PLACEHOLDER. This will be a shop someday")
 
-def pregame():
+def pregame_routine():
     """
-    rough structure
 
-        Print title screen DONE
-
-        dialougue
-
-        manager stuff
-
-        Store stuff (append to inventory)
 
     """
     banner.game_banner()
+
     #time.sleep(3)
     pregame_dialogue() #BE AWARE this may be a python file to import.
     pregame_shop()
     print("And so the heist begins") #PLACEHOLDER, just needs something to say its moving to game proper
 
 
+    print("And so the heist begins") #PLACEHOLDER, just needs something to say its moving to game proper
+    return inventory
 def static_item_handle():
     #This function handles items that are your inventory, but are not interactable.
 
@@ -574,39 +567,37 @@ def static_item_handle():
 
 def main():
     #Main function, called upon loading module.
-
-    won=False #Set the game Won boolean to false, as the game has just started.
-    pregame() #Start pregame.
+    success=False
+    game_running=True #Set the game Won boolean to false, as the game has just started.
+    inventory=pregame_routine() #Start pregame.
     global current_room
-    global current_carry_mass
     global suspicion
 
     suspicion = 0
     current_room= locations["Lobby"] #Set the first room to lobby, the starting location.
-   # inventory= player.inventory
-    current_carry_mass = calculate_carry_mass(inventory)
-
-
-    while not (won): #While the game has not been won.s
-        #print(current_room)
+    turns_taken=0
+    while game_running: #While the game has not been won.s
+        turns_taken+=1
         if (suspicion > 6):
-            print("\n\n\n\nYOU WERE CAUGHT\n\n\n\n")
-            input()
-            return
+            game_running=False
+
+
         if ("gold" in inventory):
-            print("\n\n\n\nYOU WON! THE HEIST WAS SUCCESFUL!\n\n\n\n")
-            input()
-            return
+            success=True
+            game_running=False
+
         static_item_handle()
         print_room(current_room)
         print_inventory_items(inventory)
-        #print("Your current carry weight is {}kg. \n".format(current_carry_mass))
         command = menu(current_room["exits"], current_room["contents"], inventory)
 
         execute_command(command) #Executes the command inputed by the user.
 
-    print("\n\nCongrats!")
+    if success:
+        print("\n\n\n\nYOU WON! THE HEIST WAS SUCCESSFUL!\n\n\n\n")
 
+    else:
+        print("\n\n\n\nYOU WERE CAUGHT\n\n\n\n")
 
 #Save Bank Heist game
 
@@ -735,6 +726,8 @@ def create_save():
         new_save.write(str(security_locked))
         print("Saved Succesfully.")
     #new_save.close()
+
+
 
 
 if __name__ == "__main__":

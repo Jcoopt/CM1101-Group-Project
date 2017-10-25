@@ -1,6 +1,7 @@
-import items
 from banner import *
+from items import *
 
+#Incomplete!
 location_entry_exit = {
     "name": "Entrance/Exit",
 
@@ -25,7 +26,7 @@ location_consultation = {
 
     "exits": {"west": "Entrance/Exit", "south": "Manager's Office", "east": "Lobby", "north": "Janitors"},
 
-    "contents": ["securitycamera", "securityguard", "screwdriver"],
+    "contents": ["securitycamera", "securityguard", "firealarm"],
 
     "banner": consultation_banner
 }
@@ -40,7 +41,7 @@ location_managers = {
 
     "exits": {"north": "Consultation Room"},
 
-    "contents": ["keycard", "securitycamera"],
+    "contents": ["keycard", "securitycamera", "minisafe", "combination"],
 
     "banner": manage_banner
 }
@@ -53,7 +54,7 @@ location_lobby = {
     """The lobby of the bank. This area is the least guarded of the bank, employees enter and leave frequently,
     but only one security guard is to be seen. A mysterious object is located in the plant, south of the room.""",
 
-    "exits": {"east": "Bank Tellers", "south": "Security Office", "west": "Consultation Room", "north": "Toilets"}, 
+    "exits": {"east": "Bank Tellers", "south": "Security Office", "west": "Consultation Room", "north": "Toilets"},
 
     "contents": ["securityguard", "energydrink"],
 
@@ -68,9 +69,9 @@ location_security = {
     """All activity within the bank is monitered from this station. The office is operated by several security officers,
     all of which are currently watching the live CCTV feedback. They are unaware of your presence. """,
 
-    "exits": {"north": "Lobby"}, 
+    "exits": {"north": "Lobby"},
 
-    "contents": ["securitycamera", "controlpanel", "securityguard"],
+    "contents": ["securitycamera", "note", "controlpanel", "securityguard"],
 
     "banner": security_banner
 }
@@ -83,9 +84,9 @@ location_tellers = {
     """The easternmost location in the bank. The room is filled with mostly employees and customers, it is quite loud in
     the room, you can barely hear yourself think.""",
 
-    "exits": {"west": "Lobby", "south": "Vault"}, 
+    "exits": {"west": "Lobby", "south": "Vault"},
 
-    "contents": ["securitycamera", "banktellers", "securityguard", "note"],
+    "contents": ["securitycamera", "banktellers", "securityguard"],
 
     "banner": bank_banner
 }
@@ -96,11 +97,11 @@ location_vault = {
 
     "description":
     """All of the banks valuables are stored here. Security cameras are located on each corner of the room.
-    The vault itself is made of a special concrete with a steel cladding, reinforced with a network of steel rods. 
+    The vault itself is made of a special concrete with a steel cladding, reinforced with a network of steel rods.
     The vault is secured electronically with two key card scanners, as well as a combination lock. You notice that the locks
    are alarmed, and will most likely be set off after a single failed attempt of entry.""",
 
-    "exits": {"south":"Bank Tellers"}, 
+    "exits": {"south":"Bank Tellers"},
 
     "contents": ["securitycamera", "vaultdoor", "securityguard"],
 
@@ -114,10 +115,9 @@ location_janitor = {
     "description":
     """Utilities and other tools are stored here!.""",
 
-
     "exits": {"south": "Consultation Room"},
 
-    "contents": ["wirecutters", "vent"],
+    "contents": ["wirecutters", "broom", "paper", "janitorsuniform", "vent"],
 
     "banner": janitors_banner
 }
@@ -132,19 +132,20 @@ location_Toilet = {
     "exits":{"south": "Lobby"},
 
     "contents": ["keys", "toiletpaper"],
-
+    
     "banner": toilets_banner
 }
 
 
 locations = {
 	"Vault": location_vault,
+    "Toilets": location_Toilet,
 	"Bank Tellers": location_tellers,
 	"Security Office": location_security,
 	"Lobby": location_lobby,
 	"Manager's Office": location_managers,
 	"Consultation Room": location_consultation,
 	"Entrance/Exit": location_entry_exit,
-    "Janitors": location_janitor,
-    "Toilets": location_Toilet
+    "Janitors":location_janitor
+
 }
