@@ -13,11 +13,15 @@ shop_items = [item_sneakers, item_lunch_coupon, item_screwdriver, item_wire_cutt
 # --------- print menu --------- #
 def pre_game_print_option():
     global balance
+    i = 1
     shop_banner()
     print("Which of the following action will you take?")
     for item in shop_items:
-        print("BUY {0} to buy {1}. (${2})".format(item["id"].upper(),item["name"],item["value"]))
-    print("LEAVE to leave the shop and back to home.")
+        print("{0}) BUY {1} to buy {2}. (${3})".format(i,item["id"].upper(),item["name"],item["value"]))
+        print("   ({0})".format(item["description"]))
+        i += 1
+
+    print("{0}) LEAVE to leave the shop and back to home.".format(i))
 
 
 
@@ -41,9 +45,13 @@ def pre_game_excute_buy(item_id):
                 inventory.append(item_id)
                 shop_items.remove(item_index[item_id])
                 balance -= item_index[item_id]["value"]
-                print("\n\nyou have bought {}".format(item_index[item_id]["name"]))
+                print("\n----------------------------------------")
+                print(" You have bought {}".format(item_index[item_id]["name"]))
+                print("----------------------------------------")
             else:
-                print("You don't have the money to buy that")
+                print("\n----------------------------------------")
+                print(" You don't have the money to buy that")
+                print("----------------------------------------")
     except:
         print("Buy what?")
 def pre_game_excute(command):
