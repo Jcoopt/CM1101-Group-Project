@@ -8,7 +8,6 @@ item_drinks = {
 
 	"description": " ",
 
-	"mass": 0.1,
 
 	# the price of this itme
 	"value": 50
@@ -24,7 +23,6 @@ item_keycard = {
 
 	"description": "The magic key that can get you into the security office!",
 
-	"mass": 0.4,
 
 	"action": ["Take"],
 
@@ -38,7 +36,6 @@ item_managers_credit_card = {
 
 	"description": "The manager's shiny golden contactless AND limitless Amex card!",
 
-	"mass": 0.5,
 
 	"action": ["Steal"],
 
@@ -52,7 +49,7 @@ item_lunch_coupon = {
     
     "description": "Coupon for a free meal deal at The Corner Shop (which are so bad they should be free anyway).",
 
-    "mass": 0.1,
+
 
     "action": ["Take"],
 
@@ -65,8 +62,6 @@ item_combination = {
     "name": "The combination to the vault",
     
     "description": "The only thing that stands between you and the diamonds.",
-    
-    "mass": 0.1,
 
     "action": ["Take"],
 
@@ -79,8 +74,6 @@ item_paperclip = {
     "name": "Random paperclip",
     
     "description": "Single paperclip that can be used as a picklock",
-    
-    "mass": 0.08,
 
     "action": ["Take"],
 
@@ -94,7 +87,6 @@ item_note = {
     
     "description": "A post-it note that contains the combination to the mini-safe.",
     
-    "mass": 0.09,
 
     "action": ["Take"],
 
@@ -108,7 +100,7 @@ item_gold = {
     
     "description": "The treasure.",
     
-    "mass": 1,
+
 
     "action": ["Steal"],
 
@@ -125,7 +117,6 @@ item_sneakers = {
 
 	"description": "A battered pair of Nike Air Force 1s, the least squeaky shoes in the world.",
 
-	"mass": 0.1,
     "value": 50,
 
 
@@ -142,7 +133,7 @@ item_lunch_box = {
 	"description": "Original Power Rangers lunch box in case you get hungry mid-heist.","value": 50,
 
 
-	"mass": 0.1,
+
 
 	"action": ["Take"],
 
@@ -156,7 +147,6 @@ item_screwdriver = {
 
 	"description": "Rusty and second hand but reliable","value": 50,
 
-	"mass": 0.1,
 
 	"action": ["Take"],
 
@@ -169,8 +159,6 @@ item_wire_cutter = {
 	"name": "a wire cutter",
 
 	"description": "Brand new wire cutters that can cut through anything in its path.","value": 50,
-
-	"mass": 0.1,
 
 	"action": ["Take"],
 
@@ -185,7 +173,7 @@ item_ski_mask = {
 
 	"description": "Plain black ski mask to hide your identity",
 
-	"mass": 0.1,
+
 
 	"action": ["Wear"],
 
@@ -199,7 +187,7 @@ item_backpack = {
 
 	"description": "A backpack with a large capacity to hold all of your 'winnings'.",
 
-	"mass": 0.1,
+
 
 	"action": ["Take"],
 
@@ -212,8 +200,6 @@ item_laptop = {
 	"name": "a Laptop",
 
 	"description": "The new MacBook Pro with built-in 3G for use literally anywhere!",
-
-	"mass": 0.5,
     "value": 500,
 
 	"action": ["Take"],
@@ -228,7 +214,7 @@ item_vodka = {
 
 	"description": "A large 10l bottle of Smirnoff",
 
-	"mass": 0.9,
+
 
 	"action": ["Drink"],
 }
@@ -240,7 +226,6 @@ item_donuts = {
 
 	"description": "An 11 piece box of Crispy Kreme's finest donut selection ",
 
-	"mass": 0.2,
 
 	"action": ["Take"],
 
@@ -254,7 +239,7 @@ item_security_guard = {
 
     "description": "A slightly pudgy middle aged man with a penchant for Donuts",
 
-    "mass": 0.2,
+
 
     "action": ["Punch", "Bribe"],
 
@@ -270,7 +255,7 @@ item_security_camera = {
     "description": "An oblong box on the ceiling with a lens on one end. if it weren't for the blinking light "
                    "you would wonder if it were even working",
 
-    "mass": 0.2,
+
 
     "action": ["Cut"],
 
@@ -287,7 +272,7 @@ item_tellers = {
 
     "description": "a Kiosk with a thick glass covering",
 
-    "mass": 8,
+
 
     "action": ["Pick up"],
 
@@ -300,8 +285,6 @@ item_drill = {
 	"name": "A Drill",
 	
 	"description": "a heavy drill, great for breaking into vaults",
-	
-	"mass": 0.8,
 
 	"action": ["Take"],
 
@@ -318,7 +301,7 @@ item_energy_drink = {
 	
 	"description": "A large can of Monster",
 	
-	"mass": 0.3,
+
 
 	"action": ["Take"],
 
@@ -331,8 +314,7 @@ item_family_picture = {
 	"name": "Family Picture",
 	
 	"description": "a crumpled up picture, depicting three smiling people",
-	
-	"mass": 0.1,
+
 
 	"action": ["Take"],
 
@@ -346,7 +328,6 @@ item_fire_alarm = {
 	
 	"description": "Don't set it off...",
 	
-	"mass": 0.1,
 
 	"action": ["Steal"],
 
@@ -360,7 +341,6 @@ item_keys = {
 	
 	"description": "Hmm, I wonder what they unlock.",
 	
-	"mass": 0.1,
 
 	"action": ["Steal"],
 
@@ -375,7 +355,6 @@ item_toilet_paper = {
 
 	"description": "Nice.",
 
-	"mass": 0.4,
 
 	"action": ["Take"],
 
@@ -389,7 +368,7 @@ item_broom = {
 
 	"description": "For sweeping only.",
 
-	"mass": 0.1,
+
 
 	"action": ["Take"],
 
@@ -403,7 +382,6 @@ item_paper = {
 
 	"description": "Hmmmmmm.",
 
-	"mass": 0.1,
 
 	"action": ["Take"],
 
@@ -418,7 +396,7 @@ item_janitor_uniform = {
 
 	"description": "NOT for disguises.",
 
-	"mass": 0.3,
+
 
 	"action": ["Wear"],
 
@@ -432,8 +410,6 @@ item_vent = {
 
 	"description": "You could climb through this.",
 
-	"mass": 0.8,
-
 	"action": ["Unscrew"],
 
 	"undo_action": "Re-screw"
@@ -446,7 +422,6 @@ item_mini_safe= {
 
 	"description": "There could be money in this.",
 
-	"mass": 5,
 
 	"action": ["Steal from"],
 
@@ -460,7 +435,6 @@ item_control_panel= {
 
 	"description": "Controls all the security camera's in the bank.",
 
-	"mass": 5,
 
 	"action": ["Deactivate all Cameras on"],
 
@@ -473,8 +447,6 @@ item_vault_door= {
 	"name": "Vault door",
 
 	"description": "The final boss.",
-
-	"mass": 99,
 
 	"action": ["Use drill on", "Enter combination on"],
 

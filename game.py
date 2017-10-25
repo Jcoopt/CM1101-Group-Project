@@ -4,20 +4,12 @@ from gameparser import *
 from time import *
 from map import *
 import time
-import msvcrt
+import pregame
 import sys
 import banner
 
 cameras = 6
 guards = 6
-
-def calculate_carry_mass(inventory):
-    """"""
-
-    carry_mass=0
-    for item in inventory:
-        carry_mass += item_index[item]["mass"]
-    return carry_mass
 
 
 def list_of_items(item_list):
@@ -132,19 +124,10 @@ def execute_interact(item_id):
     print("item id is " + item_id)
     global current_room
     global inventory
-    global current_carry_mass
-    inv_changed=False
     for item in current_room["contents"]:
         if item_id in item:
-            if current_carry_mass + item_index[item]["mass"] < 3:
-                inventory.append(item)
-                current_room["contents"].remove(item)
-                inv_changed=True
-                current_carry_mass = calculate_carry_mass(inventory)
-            else:
-                print("That is too heavy")
-    if not(inv_changed):
-        print("You cannot do that.")
+            inventory.append(item)
+            current_room["contents"].remove(item)
 
 
 def execute_drop(item_id,current_room):
@@ -158,16 +141,10 @@ def execute_drop(item_id):
     """"""
     global current_room
     global inventory
-    global current_carry_mass
-    inv_changed=False
     for item in inventory:
         if (item_id in item_index[item]["id"].lower()):
             current_room["contents"].append(item)
             inventory.remove(item)
-            inv_changed=True
-            current_carry_mass = calculate_carry_mass(inventory)
-    if not(inv_changed):
-        print("You cannot drop that.")
 
 def execute_interact_command(command):
     if len(command) > 1:
@@ -418,26 +395,15 @@ def move(exits, direction):
 # ----------------------------------------------- #
 
 
-def pregame():
+def pregame_routine():
     """
-    rough structure
-
-        Print title screen DONE
-
-        dialougue
-
-        manager stuff
-
-        Store stuff (append to inventory)
-
-
 
     """
     banner.game_banner()
-    #time.sleep(2)
+    time.sleep(2)
 
-    #pregame_dialogue() #BE AWARE this may be a python file to import.
-    #pre_game_bar()
+    pregame.display_start_dialog()
+    inventory=pregame.pre_game_shop()
 
     #time.sleep(3)
     #pregame_dialogue() #BE AWARE this may be a python file to import.
@@ -446,36 +412,8 @@ def pregame():
     #pre_game_home()
 
     print("And so the heist begins") #PLACEHOLDER, just needs something to say its moving to game proper
+    return inventory
 
-
-
-def main():
-
-    won = False
-    pregame()
-    global current_room
-    global current_carry_mass
-    global suspicion
-
-    suspicion = 0
-    current_room= locations["Lobby"]
-   # inventory= player.inventory
-    current_carry_mass = calculate_carry_mass(inventory)
-
-
-    while not (won):
-        #print(current_room)
-        if (suspicion > 2):
-            print("\n\n\n\nYOU DIED\n\n\n\n")
-            return
-        print_room(current_room)
-        print_inventory_items(inventory)
-        #print("Your current carry weight is {}kg. \n".format(current_carry_mass))
-        command = menu(current_room["exits"], current_room["contents"], inventory)
-
-        execute_command(command)
-
-    print("\n\nCongrats!")
 
 
 #Save Bank Heist game
@@ -573,6 +511,32 @@ def create_save():
         new_save.write(str(guards))
         print("Saved Succesfully.")
     #new_save.close()
+
+def main():
+
+    won = False
+    inventory=pregame_routine()
+    global current_room
+    global suspicion
+
+    suspicion = 0
+    current_room= locations["Lobby"]
+   # inventory= player.inventory
+
+
+
+    while not (won):
+        #print(current_room)
+        if (suspicion > 2):
+            print("\n\n\n\nYOU DIED\n\n\n\n")
+            return
+        print_room(current_room)
+        print_inventory_items(inventory)
+        command = menu(current_room["exits"], current_room["contents"], inventory)
+
+        execute_command(command)
+
+    print("\n\nCongrats!")
 
 
 
