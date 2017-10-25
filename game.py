@@ -518,12 +518,11 @@ def pregame_routine():
 
     banner.game_banner()
     time.sleep(2)
-    #user_name=pregame.display_start_dialog()
+    user_name=pregame.display_start_dialog()
     inventory = pregame.pre_game_shop()
 
     print("And so the heist begins") #PLACEHOLDER, just needs something to say its moving to game proper
 
-    user_name="Tom"
     return user_name,inventory
 def static_item_handle():
     #This function handles items that are your inventory, but are not interactable.
