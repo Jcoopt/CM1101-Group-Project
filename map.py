@@ -1,14 +1,14 @@
 import items
 location_entry_exit = {
-    "name": "Entrance/exit",
+    "name": "Entrance/Exit",
 
     "description":
     """The entrance to the bank. Several security cameras overhang the steel impact-resistant doors.
-    Three unarmed security guards are patrolling the entrance.""",
+    One unarmed security guards are patrolling the entrance.""",
 
     "exits": {"east": "Consultation Room"},
 
-    "contents": {"paperclip","Security Cameras"},
+    "contents": ["paperclip","securitycamera", "securityguard"]
 
 
 }
@@ -16,7 +16,7 @@ location_entry_exit = {
 
 
 location_consultation = {
-    "name": "The Consultation Room",
+    "name": "Consultation Room",
 
     "description":
     """Consultation boothes are scattered around the room. It would appear that all employees are pre-occupied with customers,
@@ -24,7 +24,7 @@ location_consultation = {
 
     "exits": {"west": "Entrance/Exit", "south": "Manager's Office", "east": "Lobby", "north": "Janitors"},
 
-    "contents": {"Security Cameras", "security guard", "fire alarm"},
+    "contents": ["securitycamera", "securityguard", "firealarm"]
 
 
 
@@ -33,7 +33,7 @@ location_consultation = {
 
 
 location_managers = {
-    "name": "The Manager's Office",
+    "name": "Manager's Office",
 
     "description":
     """The Manager of the bank resides here from 9:00 to 19:00. The manager keeps a close eye on security and is constantly on
@@ -41,7 +41,7 @@ location_managers = {
 
     "exits": {"north": "Consultation Room"},
 
-    "contents": {"Keycard", "Security Cameras", "mini safe", "combination"},
+    "contents": ["keycard", "securitycamera", "minisafe", "combination"]
 
 
     #The safe contains a note with digits for the vault
@@ -57,7 +57,7 @@ location_managers = {
 
 
 location_lobby = {
-    "name": "The Lobby",
+    "name": "Lobby",
 
     "description":
     """The lobby of the bank. This area is the least guarded of the bank, employees enter and leave frequently,
@@ -65,7 +65,7 @@ location_lobby = {
 
     "exits": {"east": "Bank Tellers", "south": "Security Office", "west": "Consultation Room", "north": "Toilets"}, 
 
-    "contents": {"Security Guard", "energy drink"},
+    "contents": ["securityguard", "energydrink"]
 
 
 
@@ -77,7 +77,7 @@ location_lobby = {
 
 
 location_security = {
-    "name": "The Security Office",
+    "name": "Security Office",
 
     "description":
     """All activity within the bank is monitered from this station. The office is operated by several security officers,
@@ -85,7 +85,7 @@ location_security = {
 
     "exits": {"north": "Lobby"}, 
 
-    "contents": {"Security Cameras", "note"},
+    "contents": ["securitycamera", "note", "controlpanel", "securityguard"]
 
 
 
@@ -109,7 +109,7 @@ location_tellers = {
 
     "exits": {"west": "Lobby", "south": "Vault"}, 
 
-    "contents": {"Security Cameras", "Bank Tellers", "Security Guard"},
+    "contents": ["securitycamera", "banktellers", "securityguard"]
 
 
 
@@ -122,7 +122,7 @@ location_tellers = {
 
 
 location_vault = {
-    "name": "The Vault",
+    "name": "Vault",
 
     "description":
     """All of the banks valuables are stored here. Security cameras are located on each corner of the room.
@@ -132,7 +132,7 @@ location_vault = {
 
     "exits": {"south":"Bank Tellers"}, 
 
-    "contents": {"Security Cameras", "GOLD"},
+    "contents": ["securitycamera", "vaultdoor", "securityguard"]
 
 
 
@@ -155,9 +155,9 @@ location_janitor = {
     """Utilities and other tools are stored here!.""",
 
 
-    "exits": {"south": "Consultation"},
+    "exits": {"south": "Consultation Room"},
 
-    "contents": {"wire cutters", "broom", "paper", "Janitors uniform", "Vent"}
+    "contents": ["wirecutters", "broom", "paper", "janitorsuniform", "vent"]
 
     #To get into the Janitors room you need a picklock or the keys
 
@@ -175,18 +175,12 @@ location_Toilet = {
     "description":
     """Unisex tolients""",
 
-
     "exits":{"south": "Lobby"},
 
-    "contents": {"keys", "toilet paper"}
+    "contents": ["keys", "toiletpaper"]
 
 
     #You noitce dropped keys that are used to open the jantors room
-        
-
-
-
-
 
 }
 
@@ -197,12 +191,12 @@ location_Toilet = {
 
 locations = {
 	"Vault": location_vault,
-	"Tellers": location_tellers,
+	"Bank Tellers": location_tellers,
 	"Security Office": location_security,
 	"Lobby": location_lobby,
 	"Manager's Office": location_managers,
 	"Consultation Room": location_consultation,
-	"Entrance/exit": location_entry_exit,
+	"Entrance/Exit": location_entry_exit,
     "Janitors": location_janitor,
-    "Toilet": location_Toilet
+    "Toilets": location_Toilet
 }
