@@ -124,5 +124,5 @@ def display_start_dialog():
     \n"Joe: Tomorrow then. \n You: Yeah, tomorrow then."""
 
     print_ch_by_ch(intro_pt2, 0.01)
-
+    return user_name
 
