@@ -39,6 +39,22 @@ item_combination = {
 }
 
 
+# List of items you can buy or take in the bar
+item_drinks = {
+	"id": "drinks",
+
+	"name": "some drinks",
+
+	"description": " ",
+
+	"mass": 0.1,
+
+	# the price of this itme
+	"value": 50
+}
+
+
+
 # List of items you can buy in the shop
 item_sneakers = {
 	"id": "sneakers",
@@ -47,17 +63,27 @@ item_sneakers = {
 
 	"description": " ",
 
-	"mass": 0.1
+	"mass": 1,
+
+	# the price of this itme
+	"value": 50,
+
+	"action": "BUY"
 }
 
 item_lunch_box = {
-	"id": "lunch_box",
+	"id": "lunch",
 
 	"name": "a set of lunch",
 
 	"description": " ",
 
-	"mass": 0.1
+	"mass": 3,
+
+	# the price of this itme
+	"value": 50,
+
+	"action": "BUY"
 }
 
 item_screwdriver = {
@@ -67,28 +93,43 @@ item_screwdriver = {
 
 	"description": " ",
 
-	"mass": 0.1
+	"mass": 2,
+
+	# the price of this itme
+	"value": 50,
+
+	"action": "BUY"
 }
 
 item_wire_cutter = {
-	"id": "wire_cutter",
+	"id": "cutter",
 
 	"name": "a wire cutter",
 
 	"description": " ",
 
-	"mass": 0.1
+	"mass": 4,
+
+	# the price of this itme
+	"value": 50,
+
+	"action": "BUY"
 }
 
 # List of items you can find in your home
 item_ski_mask = {
-	"id": "ski_mask",
+	"id": "mask",
 
 	"name": "a ski mask",
 
 	"description": " ",
 
-	"mass": 0.1
+	"mass": 0.1,
+
+	# the price of this itme
+	"value": 0,
+
+	"action": "TAKE"
 }
 
 item_backpack = {
@@ -98,7 +139,12 @@ item_backpack = {
 
 	"description": " ",
 
-	"mass": 0.1
+	"mass": 0,
+
+	# the price of this itme
+	"value": 0,
+
+	"action": "TAKE"
 }
 
 item_laptop = {
@@ -108,7 +154,12 @@ item_laptop = {
 
 	"description": " ",
 
-	"mass": 0.1
+	"mass": 0.1,
+
+	# the price of this itme
+	"value": 0,
+
+	"action": "TAKE"
 }
 
 item_vodka = {
@@ -118,7 +169,12 @@ item_vodka = {
 
 	"description": " ",
 
-	"mass": 0.1
+	"mass": 0.1,
+
+	# the price of this itme
+	"value": 0,
+
+	"action": "DRINK"
 }
 
 item_donats = {
@@ -128,5 +184,10 @@ item_donats = {
 
 	"description": " ",
 
-	"mass": 0.1
+	"mass": 0.1,
+
+	# the price of this itme
+	"value": 0,
+
+	"action": "TAKE"
 }

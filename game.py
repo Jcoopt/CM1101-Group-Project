@@ -181,17 +181,54 @@ def move(exits, direction):
 
     return map.areas[exits[direction]]
 
-def pregame_dialogue():
-    """
-    prints the pregame dialogue
+
+# ----------------------------------------------- #
+# ---------------- pre-game part ---------------- #
+# ----------------------------------------------- #
+def pre_game_print_option(location):
+    # print the option the player can choice
+    print("Which of the following action will you take?")
+    for i in range()
+    '''
+    print("Which of the following action will you take? (Please input as a integer!)")
+    for i in range(len(location["question"])):
+        print(str(i + 1) + ") " + location["question"][i] + " (" + location["hints"][i] + ")")
+    
+    print()
+    '''
+
+
+def pre_game_read_user_input(option):
+    user_input = input("> ")
+
+
+def pre_game_cal_budget(balance, value):
+    # cal_budget(balance, )
+    amount = balance - value
+    if amount >= 0:
+        return amount
+    else:
+        return False
+
+
+def change_status()
 
 
 
-    """
-    print("PLACEHOLDER. This will be dialogue someday")
+def pre_game_bar():
+    # print("") <-- print the story
+    pre_game_print_option(location_bar)
+        
 
-def pregame_shop():
-    print("PLACEHOLDER. This will be a shop someday")
+def pre_game_shop():
+    # print("") <-- print the story
+    pre_game_print_option(location_shop)
+
+
+def pre_game_home():
+    # print("") <-- print the story
+    pre_game_print_option(location_home)
+
 
 def pregame():
     """
@@ -210,15 +247,15 @@ def pregame():
     """
     banner.game_banner()
     time.sleep(3)
-    pregame_dialogue() #BE AWARE this may be a python file to import.
-    pregame_shop()
+    #pregame_dialogue() #BE AWARE this may be a python file to import.
+    #pregame_shop()
     print("And so the heist begins") #PLACEHOLDER, just needs something to say its moving to game proper
 
 
 
 def main():
 
-    won=False
+    won = False
     pregame()
     while not (won):
 
