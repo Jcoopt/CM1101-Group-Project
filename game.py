@@ -242,6 +242,7 @@ def execute_drop(item_id):
     #Function handling item dropping
     global current_room
     global inventory
+    item_in_inventory = True
     for item in inventory:
         if (item_id in item_index[item]["id"].lower()): #If the item exists within the inventory.
             current_room["contents"].append(item) #Add the item to the current rooms contents.
