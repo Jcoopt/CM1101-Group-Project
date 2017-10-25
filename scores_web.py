@@ -7,7 +7,7 @@ app = flask.Flask(__name__) # sets up flask
 @app.route('/') # landing page of webserver
 def index(): # defines the content of the landing page
     SQLcursor =get_db().cursor()
-    data= SQLcursor.execute('SELECT * FROM Scores ORDER BY Time')
+    data= SQLcursor.execute('SELECT * FROM Scores ORDER BY Turns ')
     formattedData=[]
     for row in data:
         formattedData.append("{} - {}".format(row[0],round(row[1],4))) # displays the correctly formatted name and time

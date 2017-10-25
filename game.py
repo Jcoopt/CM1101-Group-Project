@@ -722,6 +722,6 @@ def create_save():
 
 
 if __name__ == "__main__":
-
+    add_to_score_database("COLIN", 150)
     main()
 
