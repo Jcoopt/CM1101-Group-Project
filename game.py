@@ -572,7 +572,7 @@ def main():
         execute_command(command) #Executes the command inputed by the user.
 
     if success:
-        print("\n\n\n\nYOU WON! THE HEIST WAS SUCCESSFUL!\n\n\n\n")
+        end_game_banner()
         print("You took {} turns".format(turns_taken))
         add_to_score_database(name, turns_taken)
     else:
