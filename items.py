@@ -121,7 +121,7 @@ item_sneakers = {
 
 	"description": "A battered pair of Nike Air Force 1s, the least squeaky shoes in the world.",
 
-    "value": 50,
+    "value": 30,
 
 	"action": ["Wear"],
 
@@ -135,7 +135,7 @@ item_lunch_box = {
 
 	"description": "Original Power Rangers lunch box in case you get hungry mid-heist.",
 
-    "value":20,
+    "value":10,
 
 	"action": ["Take"],
 
@@ -143,16 +143,15 @@ item_lunch_box = {
 }
 
 item_screwdriver = {
-	"id": "screwdriver",
+    "id": "screwdriver",
 
-	"name": "a Screwdriver",
+    "name": "a Screwdriver",
 
-	"description": "Rusty and second hand but reliable",
+    "description": "Rusty and second hand but reliable",
+    "value": 20,
+    "action": ["Take"],
 
-"value":20,
-	"action": ["Take"],
-
-	"undo_action": "Drop"
+    "undo_action": "Drop"
 }
 
 item_wire_cutter = {
@@ -163,7 +162,7 @@ item_wire_cutter = {
 	"description": "Brand new wire cutters that can cut through anything in its path.",
 
 	"action": ["Take"],
-"value":20,
+    "value":20,
 
 	"undo_action": "Drop"
 }
@@ -203,7 +202,7 @@ item_laptop = {
 	"name": "a Laptop",
 
 	"description": "The new MacBook Pro with built-in 3G for use literally anywhere!",
-    "value": 500,
+    "value": 50,
 
 	"action": ["Take"],
 

@@ -7,31 +7,20 @@ global inventory
 inventory= player.inventory
 
 
-location_shop = {
-    # story description and dialog (incomplete)
-    "description:": '''Story Part - SHOP''',
-
-    "items": [item_sneakers, item_lunch_box, item_screwdriver, item_wire_cutter,item_laptop]
-}
-
+shop_items=[item_sneakers, item_lunch_box, item_screwdriver, item_wire_cutter,item_laptop]
 
 # --------- print menu --------- #
-def pre_game_print_option(location):
-    i = 1
+def pre_game_print_option():
+    global balance
     print("Which of the following action will you take?")
-    if location == location_shop:
-        for item in location["items"]:
-            print(" {0} to buy {1}. (${2})".format(item["id"].upper(),item["name"],item["value"]))
-        print(str(i) + ") " + "LEAVE to leave the shop and back to home.")
+    for item in shop_items:
+        print(" {0} to buy {1}. (${2})".format(item["id"].upper(),item["name"],item["value"]))
+    print("LEAVE to leave the shop and back to home.")
 
 
 
-def pre_game_print_balance():
+def pre_game_print_balance(balance):
     print("<-- You have £" + str(balance) + " left -->")
-
-def pre_game_print_mass():
-    print("<-- Total mass of your inventory is " + str(mass) + " kg" + ". -->\n")
-
 
 # --------- print menu --------- #
 
@@ -40,18 +29,21 @@ def pre_game_read_user_input():
     user_input = input("> ")
     return normalise_input(user_input)
 
-
 # --------- game excute part --------- #
 def pre_game_excute_buy(item_id):
     global balance
-    global mass
-    buy_status = False
-    if item_index[item_id] in location_shop["items"]:
+
+
+    if item_index[item_id] in shop_items:
+        if item_index[item_id]["value"] <= balance:
             inventory.append(item_id)
-            location_shop["items"].remove(item_index[item_id])
+            shop_items.remove(item_index[item_id])
+            balance -= item_index[item_id]["value"]
             print("you have bought {}".format(item_index[item_id]["name"]))
-
-
+        else:
+            print("You don't have the money to buy that")
+    else:
+        print("Buy what?")
 def pre_game_excute(command):
     global pre_game_location
 
@@ -68,7 +60,6 @@ def pre_game_excute(command):
 
     elif command[0] == "leave":
         print("You leave the shop and go home.\n")
-        pre_game_location = location_shop
         return False
 
 
@@ -79,29 +70,17 @@ def pre_game_excute(command):
 # --------- game excute part --------- #
 
 
-def pre_game_cal_mass(item_mass, total_mass):
-    # cal
-    return item_mass + total_mass
-
-
-def pre_game_cal_budget(balance, value):
-    # cal_budget(balance, )
-    return balance - value
-
 
 # --------- main pre-game part --------- #
-def pre_game_bar():
-    # print("") <-- print the story
-
-    pre_game_print_option(location_bar)
-    pre_game_read_user_input()
-
 
 def pre_game_shop():
     # print("") <-- print the story
+    global balance
+    balance=50
     user_input=True
     while user_input:
-        pre_game_print_option(location_shop)
+        pre_game_print_option()
+        pre_game_print_balance(balance)
         user_input = pre_game_excute(pre_game_read_user_input())
     return inventory
 # --------- main pre-game part --------- #
