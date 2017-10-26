@@ -7,6 +7,14 @@ import time
 import pregame
 import sqlite3
 import banner
+from pyfirmata import Arduino, util
+import time
+import winsound
+board_connected=True
+try:
+    board = Arduino('COM3')
+except:
+    board_connected=False
 
 #Global variables used to control certain conditions
 cameras = 6
@@ -583,6 +591,18 @@ def main():
         add_to_score_database(name, turns_taken)
     else:
         print("\n\n\n\nYOU WERE CAUGHT\n\n\n\n")
+        winsound.PlaySound('sound.wav', winsound.SND_ASYNC)
+        if board_connected:
+            for x in range(20):
+                board.digital[13].write(1)
+                board.digital[12].write(0)
+                time.sleep(0.18)
+                board.digital[13].write(0)
+                board.digital[12].write(1)
+                time.sleep(0.18)
+        time.sleep(5)
+        winsound.PlaySound(None,winsound.SND_PURGE)
+
         print("You took {} turns".format(turns_taken))
 
 #Save Bank Heist game
@@ -683,7 +703,7 @@ def create_save():
     """This function saves all the important game details to a text file.
     Data is formatted appropriately, so that it can be read correctly during the load function.
     This is done by using special character such as '#' that can be detected and removed later on."""
-    
+
     with open("save.txt", "w") as new_save:
         new_save.write("~ INVENTORY ~" + "\n")
         for item in inventory:
