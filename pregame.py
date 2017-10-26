@@ -91,8 +91,8 @@ def pre_game_excute(command):
 
 # --------- main pre-game part --------- #
 
+# This function control all the need stuff to excute it
 def pre_game_shop():
-    # print("") <-- print the story
     global balance
     balance = 70
     user_input = True
@@ -102,6 +102,7 @@ def pre_game_shop():
         user_input = pre_game_excute(pre_game_read_user_input())
 
     return inventory
+
 # --------- main pre-game part --------- #
 
 
