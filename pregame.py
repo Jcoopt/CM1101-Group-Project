@@ -5,12 +5,14 @@ import time
 import player
 from banner import *
 global inventory
+
 inventory = player.inventory
-
-
 shop_items = [item_sneakers, item_lunch_coupon, item_screwdriver,item_laptop]
 
+
 # --------- print menu --------- #
+
+# Print all the option the player can choice in the pre-game part
 def pre_game_print_option():
     global balance
     shop_banner()
@@ -23,18 +25,22 @@ def pre_game_print_option():
     print("{0}) LEAVE to leave the shop and back to home.".format(i))
 
 
-
+# Print the player current balance
 def pre_game_print_balance(balance):
     print("<-- You have $" + str(balance) + " left -->")
 
 # --------- print menu --------- #
 
 
+# Read the user input in the pre-game part and call the normalise function to normalise the user input
 def pre_game_read_user_input():
     user_input = input("> ")
     return normalise_input(user_input)
 
+
 # --------- game excute part --------- #
+
+# A function to control the "buy" command to minus the balance, add the item to player inventory and remove the item from the list
 def pre_game_excute_buy(item_id):
     global balance
 
@@ -53,6 +59,9 @@ def pre_game_excute_buy(item_id):
                 print("----------------------------------------")
     except:
         print("Buy what?")
+
+
+# A function to control all the user input, to split them to the relevant function
 def pre_game_excute(command):
     global pre_game_location
 
@@ -76,7 +85,6 @@ def pre_game_excute(command):
         print("This makes no sense.\n")
         return True
 
-
 # --------- game excute part --------- #
 
 
@@ -92,9 +100,12 @@ def pre_game_shop():
         pre_game_print_option()
         pre_game_print_balance(balance)
         user_input = pre_game_excute(pre_game_read_user_input())
+
     return inventory
 # --------- main pre-game part --------- #
 
+
+# The function to to let the string print out one by one
 def print_ch_by_ch(text,wait):
     os.system('cls')
     full_text = ""
@@ -107,7 +118,7 @@ def print_ch_by_ch(text,wait):
     print(full_text)
 
 
-
+# Display the dialog for the opening part
 def display_start_dialog():
     intro_pt1 = "You are in a rustic bar in the Upper West Side of Manhattan. \n\nIt's a friday night and you'd much " \
                 "rather be at home with Netflix and a bottle of Jack Daniels,but your good friend Joe insisted on" \
