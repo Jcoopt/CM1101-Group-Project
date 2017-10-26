@@ -18,7 +18,7 @@ noise_level = 0
 
 
 def list_of_items(item_list):
-    #Displays items in a nicely formatted list
+    """Displays items in a nicely formatted list"""
     global items
     item_string=""
     for item in item_list:
@@ -30,18 +30,18 @@ def list_of_items(item_list):
 
 
 def print_room_items(room):
-#Prints the items in the room using the list_of_items function
+    """Prints the items in the room using the list_of_items function"""
     if room["contents"]!= []:
         print("The following are here: {0}.\n".format(list_of_items(room["contents"])))
 
 
 def print_inventory_items(items):
-#Same as the above function, but with inventory items.
+    """Same as the above function, but with inventory items."""
     print("You have {0}.\n".format(list_of_items(items)))
 
 
 def print_room(room):
-#Print the current rooms name, descriptions and contents. Formatted nicely.
+    """Print the current rooms name, descriptions and contents. Formatted nicely."""
     print()
     current_room["banner"]()
     print(room["description"])
@@ -49,18 +49,19 @@ def print_room(room):
     print_room_items(room)
 
 def exit_leads_to(exits, direction):
-#returns the name of the exit in the direciton given
+    """returns the name of the exit in the direciton given"""
     return locations[exits[direction]]["name"]
 
 
 def print_exit(direction, leads_to):
-#prints the exits available in the current locations.
+    """prints the exits available in the current locations."""
     print("GO " + direction.upper() + " to " + leads_to + ".")
 
 
 def print_menu(exits, room_items, inv_items):
-#Main menu displayed to the user.
-#This functions indicates to the user what options are available to them in the current room.
+    """Main menu displayed to the user. This functions indicates to the user what options are available to them in
+    the current room."""
+
     print("You can:")
     for direction in exits:
         print_exit(direction, exit_leads_to(exits, direction))
@@ -77,12 +78,11 @@ def print_menu(exits, room_items, inv_items):
 
 
 def is_valid_exit(exits, chosen_exit):
-#returns whether or not a valid exit exists in the direction given
+    """returns whether or not a valid exit exists in the direction given"""
     return chosen_exit in exits
 
 def pick_lock_game(room):
-    #The pick locking mini game function
-    #Declare global variable so local ones are not created/accessed
+    """The pick locking mini game function. Declare global variable so local ones are not created/accessed"""
     global manager_locked
     global janitor_locked #credits to RRR
     global security_locked
@@ -110,7 +110,6 @@ def pick_lock_game(room):
         print("Pins left: "+ str(10-attempt))
         print("Accuracy: " + str(accuracy))
         attempt = attempt + 1
-       # print("Accuracy: " + accuracy)
         if (accuracy <= 0):
             print("Failure. Suspicion raised.")
             inventory.remove("paperclip")
@@ -120,7 +119,7 @@ def pick_lock_game(room):
             input("Press ENTER to leave.")
             return
         elif (attempt == 11): #If last pin is reached, then minigame won.
-            print("Success. Door unlocked.") #These next few if statements simply unlock the doors by setting the bools to False
+            print("Success. Door unlocked.") #These next few if statements unlock the doors by setting bools to False
             picked = True
             inventory.remove("paperclip")
             if(room == "Manager's Office"):
@@ -137,7 +136,7 @@ def pick_lock_game(room):
                 return
     
 def execute_go(direction):
-    #Called when player is moving room.
+    """Called when player is moving room."""
 
     global current_room
     global suspicion
@@ -214,7 +213,7 @@ def execute_go(direction):
 
 
 def execute_interact(item_id):
-    #Used for picking up items.
+    """Used for picking up items."""
     global current_room
     global inventory
     inv_changed=False
@@ -228,7 +227,7 @@ def execute_interact(item_id):
 
 
 def execute_drop(item_id): 
-    #Function handling item dropping
+    """Function handling item dropping"""
     global current_room
     global inventory
     item_in_inventory = True
@@ -256,7 +255,7 @@ def execute_go_command(command):
             print("Go where?")
 
 def execute_vent_command(command):
-    #Handles climbing through the vent in the janitor's office.
+    """Handles climbing through the vent in the janitor's office."""
     global current_room
     if len(command) > 1 and command[1] == "vent":
         if command[0] == "unscrew" and "screwdriver" in inventory: #If unscrew keyword used and player owns screwdriver:
@@ -269,8 +268,8 @@ def execute_vent_command(command):
         print("Unscrew what?")
 
 def execute_punch_command(command):
-    #Used for punching guards.
-    #Has not benefits to the player, only raises suspicion.
+    """Used for punching guards.
+    Has not benefits to the player, only raises suspicion."""
     global suspicion
     if len(command) > 1 and (command[1] == "security" or command[1] == "guard"):
         suspicion = suspicion + 1
@@ -278,8 +277,8 @@ def execute_punch_command(command):
         print("Suspicion levels are now at: " + str(suspicion))
 
 def execute_bribe_command(command):
-    #Handles bribing guards.
-    #Currently only accepted bribes are lunchcoupon and donuts.
+    """Handles bribing guards.
+    Currently only accepted bribes are lunchcoupon and donuts."""
     global suspicion
     global guards
 
@@ -313,7 +312,8 @@ def execute_bribe_command(command):
             print("Suspicion levels are now at: " + str(suspicion))
 
 def execute_deactivate_command(command):
-    #Function handling camera deactivation
+    """Function handling camera deactivation"""
+
     global cameras
     if (cameras == 0):
         print("You've already deactivated all the cameras.")
@@ -326,7 +326,7 @@ def execute_deactivate_command(command):
         print("You deactivated all the camera's in the bank!")
 
 def execute_cut_command(command):
-    #Handles cutting cameras manually.
+    """Handles cutting cameras manually."""
     global cameras
     if len(command) > 1 and (command[1] == "security" or command[1] == "cameras"):
         if "cutters" in inventory: #Player MUST have wirecutters in order to do this.
@@ -339,7 +339,7 @@ def execute_cut_command(command):
             return
 
 def execute_apologise_command(command):
-    #Hidden command used to apologise to card after punching them.
+    """Hidden command used to apologise to card after punching them."""
     global suspicion
     if len(command) > 1 and (command[1] == "security" or command[2] == "guard"):
         if suspicion > 0:
@@ -348,24 +348,28 @@ def execute_apologise_command(command):
         print("Suspicion levels are now at: " + str(suspicion))
 
 def execute_drop_command(command):
+    "Handles the drop command from the command dict"
     if len(command) > 1:
         execute_drop(command[1])
     else:
         print("Drop what?")
 def execute_inspect_command(command):
+    """Handles the inspect command from the command dict"""
     if len(command) > 1:
         if command[1] == "note" or command[2] == "note":
             print("The note says:")
             print("The clue is your course code.\n")
 def execute_save_command(command):
+    """Handles save command from the command dict"""
     create_save()
 
 def execute_load_command(command):
+    """"Handles load command from the command dict"""
     load_save()
 def execute_connect_command(command):
-    #Called when connecting laptop to bathroom wifi
-    #allows player to hack the cameras to disable them
-    #alternative to using control panel in security office
+    """Called when connecting laptop to bathroom wifi
+    allows player to hack the cameras to disable them
+    alternative to using control panel in security office"""
 
     global suspicion
     global cameras
@@ -425,8 +429,7 @@ def execute_connect_command(command):
     else:
         print("connect to what?")
 def execute_command(command):
-    """
-    """
+    """Handles all the commands inputted from user"""
     global current_room
     global suspicion
     global cameras
@@ -457,6 +460,7 @@ def execute_command(command):
         return
     if command[0] in command_dict:
         command_dict[command[0]](command)
+
     #VAULT HANDLING
     elif current_room["name"] == "Vault": #Vault room handling
         if command[0] == "use" and command[1] == "drill": #Drilling vault door (if drill owned)
@@ -497,10 +501,12 @@ def menu(exits, room_items, inv_items):
 
 
 def move(exits, direction):
-    #Returns the location in which the player will end up.
+    """Returns the location in which the player will end up."""
     return locations[exits[direction]]
 
 def add_to_score_database(name,turns):
+    """Adds the user's name and score to an SQL database"""
+
     SQLconn = sqlite3.connect('Scores.db')
     SQLcursor = SQLconn.cursor()
     SQLcursor.execute("INSERT INTO Scores VALUES(?,?)",(name,turns))                                                                                     # a statement
@@ -511,7 +517,7 @@ def add_to_score_database(name,turns):
 
 def pregame_routine():
     """
-
+    handles the interaction with the game before the main game
 
     """
 
@@ -524,7 +530,7 @@ def pregame_routine():
 
     return user_name,inventory
 def static_item_handle():
-    #This function handles items that are your inventory, but are not interactable.
+    """This function handles items that are your inventory, but are not interactable."""
 
     global suspicion
     global noise_level
@@ -541,7 +547,7 @@ def static_item_handle():
 
 
 def main():
-    #Main function, called upon loading module.
+    """Main function, called upon loading module."""
     success=False
     game_running=True #Set the game Won boolean to false, as the game has just started.
     name,inventory =pregame_routine() #Start pregame.
@@ -582,7 +588,7 @@ def main():
 #Save Bank Heist game
 
 def load_save():
-    #Function that handles game saving.
+    """Function that handles game loading."""
     global current_room
     global cameras
     global suspicion
@@ -674,9 +680,10 @@ def load_save():
 
 
 def create_save():
-    #This function saves all the important game details to a text file.
-    #Data is formatted appropriately, so that it can be read correctly during the load function.
-    #This is done by using special character such as '#' that can be detected and removed later on.
+    """This function saves all the important game details to a text file.
+    Data is formatted appropriately, so that it can be read correctly during the load function.
+    This is done by using special character such as '#' that can be detected and removed later on."""
+    
     with open("save.txt", "w") as new_save:
         new_save.write("~ INVENTORY ~" + "\n")
         for item in inventory:
